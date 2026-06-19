@@ -49,9 +49,7 @@ const Home = () => {
             animate="visible"
             className="text-center lg:text-left pt-10 lg:pt-0"
           >
-            <motion.div variants={itemVariants} className="section-badge mx-auto lg:mx-0 !mb-10">
-              <span className="flex items-center gap-2"><FiDroplet className="text-ocean" /> Elemental Body Care</span>
-            </motion.div>
+
             <motion.h1 variants={itemVariants} className="mb-10 text-slate-950 font-jakarta leading-[1.1] md:leading-[0.9] tracking-[-0.04em]">
               The New <br /> <span className="text-gradient">Standard of Glow</span>
             </motion.h1>
@@ -213,7 +211,7 @@ const Home = () => {
               <p className="text-xl text-slate-500 mb-14 leading-relaxed max-w-lg font-medium">
                 Our proprietary extraction process preserves the molecular integrity of deep-sea minerals, delivering 94% higher absorption than standard synthetics.
               </p>
-              
+
               <div className="flex gap-16 mb-16">
                 <div>
                   <div className="text-5xl font-black text-slate-900 mb-2 font-jakarta tracking-tighter">12k+</div>
@@ -232,13 +230,13 @@ const Home = () => {
 
             <div className="relative order-1 lg:order-2">
               <div className="relative bg-white p-4 rounded-[60px] shadow-[0_50px_100px_rgba(26,143,181,0.1)] border border-ocean/5 overflow-hidden">
-                 <img 
-                   src="/images/bioactive.png" 
-                   alt="Molecular Science" 
-                   className="w-full h-full object-cover rounded-[45px]" 
-                 />
+                <img
+                  src="/images/bioactive.png"
+                  alt="Molecular Science"
+                  className="w-full h-full object-cover rounded-[45px]"
+                />
               </div>
-              
+
               {/* Decorative elements */}
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-ocean/5 rounded-full blur-3xl" />
               <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-coral/5 rounded-full blur-3xl" />

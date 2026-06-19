@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FiInstagram, FiMail, FiPhone, FiMapPin, FiTwitter, FiFacebook, FiDroplet } from 'react-icons/fi';
+import { FiInstagram, FiMail, FiPhone, FiMapPin, FiTwitter, FiDroplet } from 'react-icons/fi';
 
 const Footer = () => {
   return (
@@ -11,23 +11,21 @@ const Footer = () => {
       </div>
       
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-16 mb-16 md:mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16 mb-16 md:mb-24">
           <div className="space-y-6 md:space-y-8">
             <Link to="/" className="flex items-center gap-4 group">
-              <div className="w-11 h-11 bg-ocean rounded-2xl flex items-center justify-center text-white text-xl transition-all duration-500 group-hover:bg-coral">
-                 <FiDroplet />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-extrabold leading-none tracking-[-0.04em] uppercase font-jakarta text-slate-950">The Wave</span>
-              </div>
+              <img 
+                src="/images/logo.jpeg" 
+                alt="The Wave" 
+                className="h-20 md:h-28 w-auto object-contain transition-transform duration-500 group-hover:scale-105 mix-blend-multiply" 
+              />
             </Link>
             <p className="text-slate-500 leading-relaxed text-sm font-medium max-w-xs">
               Harnessing the transformative power of deep-sea minerals to rejuvenate your body and soul.
             </p>
             <div className="flex gap-3">
               {[
-                { Icon: FiInstagram, url: 'https://www.instagram.com/mediglow.gs?igsh=MXE5OWUxbWhjMTA3cw==' },
-                { Icon: FiFacebook, url: '#' }
+                { Icon: FiInstagram, url: 'https://www.instagram.com/mediglow.gs?igsh=MXE5OWUxbWhjMTA3cw==' }
               ].map((social, i) => (
                 <a 
                   key={i} 
@@ -40,21 +38,24 @@ const Footer = () => {
                 </a>
               ))}
             </div>
+
+            {/* Quick Support QR */}
+            <div className="pt-4 flex items-center gap-4">
+              <div className="p-2 bg-white rounded-2xl border border-ocean/5 shadow-sm group">
+                <img 
+                  src="/images/customer-care.jpeg" 
+                  alt="Customer Care" 
+                  className="w-16 h-16 object-contain group-hover:scale-105 transition-transform" 
+                />
+              </div>
+              <div>
+                <p className="text-[10px] font-black text-ocean uppercase tracking-widest">Support</p>
+                <p className="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Scan for Help</p>
+              </div>
+            </div>
           </div>
 
-          <div>
-            <h3 className="font-black text-[9px] md:text-[10px] uppercase tracking-[3px] md:tracking-[4px] text-ocean mb-6 md:mb-12">The Collection</h3>
-            <ul className="space-y-3 md:space-y-4">
-              {['Body Care', 'Hair Care', 'Spa Rituals', 'New Arrivals'].map((text, i) => (
-                <li key={i}>
-                  <Link to="/products" className="text-slate-500 hover:text-ocean text-sm font-bold transition-all flex items-center gap-2 group">
-                    <span className="w-0 group-hover:w-2 h-[2px] bg-ocean transition-all" />
-                    {text}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+
 
           <div>
             <h3 className="font-black text-[9px] md:text-[10px] uppercase tracking-[3px] md:tracking-[4px] text-ocean mb-6 md:mb-12">Company</h3>
@@ -74,8 +75,9 @@ const Footer = () => {
             <h3 className="font-black text-[9px] md:text-[10px] uppercase tracking-[3px] md:tracking-[4px] text-ocean mb-6 md:mb-12">Connect</h3>
             <ul className="space-y-5 md:space-y-6">
               {[
-                { Icon: FiMapPin, text: 'Clinical HQ, Coastal Plaza, Level 4' },
-                { Icon: FiPhone, text: '+91 98765 43210' },
+                { Icon: FiMapPin, text: 'D4 Ahmed Chambers, Junabazar, Himatnagar' },
+                { Icon: FiPhone, text: '+91 7600304304' },
+                { Icon: FiMail, text: 'mediglowsolutions@gmail.com', url: 'mailto:mediglowsolutions@gmail.com' },
                 { Icon: FiInstagram, text: '@mediglow.gs', url: 'https://www.instagram.com/mediglow.gs?igsh=MXE5OWUxbWhjMTA3cw==' }
               ].map((item, i) => (
                 <li key={i} className="flex gap-4 text-slate-500 items-start">

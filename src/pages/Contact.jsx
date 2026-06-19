@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiPhone, FiMapPin, FiSend, FiInstagram, FiTwitter, FiFacebook } from 'react-icons/fi';
+import { FiMail, FiPhone, FiMapPin, FiSend, FiInstagram, FiTwitter } from 'react-icons/fi';
 import axios from 'axios';
 
 const Contact = () => {
@@ -22,6 +22,20 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus({ type: '', message: '' });
+
+    // Phone validation
+    if (formData.phone) {
+      if (!/^[6-9]/.test(formData.phone)) {
+        setStatus({ type: 'error', message: 'Invalid Number' });
+        setIsSubmitting(false);
+        return;
+      }
+      if (formData.phone.length !== 10) {
+        setStatus({ type: 'error', message: 'Invalid Number' });
+        setIsSubmitting(false);
+        return;
+      }
+    }
 
     try {
       const res = await axios.post('http://localhost:5000/api/contact', formData);
@@ -71,14 +85,14 @@ const Contact = () => {
             <div className="w-full lg:w-2/5 relative z-10">
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-10 tracking-tight leading-tight">Ritual Centers & <br/>Support</h2>
               <p className="text-lg text-slate-500 mb-16 font-medium leading-relaxed">
-                Connect with us through any channel. We aim to respond to all inquiries within 24 biological hours.
+                Connect with us through any channel. We aim to respond to all inquiries within 24 hours.
               </p>
               
               <div className="space-y-12">
                 {[
-                  { Icon: FiMapPin, title: 'Flagship Spa', text: 'Level 4, Coastal Plaza, Marine Drive, Mumbai' },
-                  { Icon: FiPhone, title: 'Concierge', text: '+91 98765 43210' },
-                  { Icon: FiMail, title: 'Inquiries', text: 'hello@thewaveglow.com' }
+                  { Icon: FiMapPin, title: 'Flagship Spa', text: 'D4 Ahmed Chambers, Junabazar, Himatnagar' },
+                  { Icon: FiPhone, title: 'Concierge', text: '+91 7600304304' },
+                  { Icon: FiMail, title: 'Inquiries', text: 'mediglowsolutions@gmail.com' }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-6 items-start">
                     <div className="w-14 h-14 bg-ocean rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg shadow-ocean/20 shrink-0">
@@ -97,8 +111,7 @@ const Contact = () => {
                 <div className="flex gap-4">
                   {[
                     { Icon: FiInstagram, url: 'https://www.instagram.com/mediglow.gs?igsh=MXE5OWUxbWhjMTA3cw==' },
-                    { Icon: FiTwitter, url: '#' },
-                    { Icon: FiFacebook, url: '#' }
+                    { Icon: FiTwitter, url: '#' }
                   ].map((social, i) => (
                     <a 
                       key={i} 
@@ -111,6 +124,26 @@ const Contact = () => {
                     </a>
                   ))}
                 </div>
+
+                {/* QR Code Section */}
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className="mt-12 p-8 bg-white rounded-[40px] border border-ocean/5 shadow-xl flex flex-col items-center gap-6 max-w-[220px] group hover:shadow-2xl hover:border-ocean/10 transition-all duration-500"
+                >
+                  <div className="p-4 bg-slate-50 rounded-[30px] shadow-inner border border-ocean/5">
+                    <img 
+                      src="/images/customer-care.jpeg" 
+                      alt="Customer Care QR" 
+                      className="w-32 h-32 object-contain group-hover:scale-110 transition-transform duration-700"
+                    />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-[10px] font-black text-ocean uppercase tracking-[3px] mb-2">Quick Support</p>
+                    <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-tight">Scan for <br /> Customer Care</p>
+                  </div>
+                </motion.div>
               </div>
             </div>
 
@@ -119,29 +152,44 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="space-y-4">
-                    <label className="text-[10px] font-black text-ocean uppercase tracking-[4px] ml-4">Biological Name</label>
+                    <label className="text-[11px] font-bold text-ocean/80 uppercase tracking-[3px] ml-4 font-outfit">Full Name</label>
                     <input 
                       type="text" name="name" required value={formData.name} onChange={handleChange}
                       placeholder="Your name" 
-                      className="w-full px-8 py-6 rounded-3xl bg-slate-50 border border-ocean/5 focus:bg-white focus:border-ocean focus:ring-4 focus:ring-ocean/5 outline-none transition-all font-bold text-slate-900 placeholder:text-slate-300" 
+                      className="w-full px-8 py-5 rounded-3xl bg-slate-50 border border-ocean/5 focus:bg-white focus:border-ocean focus:ring-4 focus:ring-ocean/5 outline-none transition-all font-bold text-slate-900 placeholder:text-slate-300 font-outfit" 
                     />
                   </div>
                   <div className="space-y-4">
-                    <label className="text-[10px] font-black text-ocean uppercase tracking-[4px] ml-4">Email Channel</label>
-                    <input 
-                      type="email" name="email" required value={formData.email} onChange={handleChange}
-                      placeholder="your@email.com" 
-                      className="w-full px-8 py-6 rounded-3xl bg-slate-50 border border-ocean/5 focus:bg-white focus:border-ocean focus:ring-4 focus:ring-ocean/5 outline-none transition-all font-bold text-slate-900 placeholder:text-slate-300" 
-                    />
+                    <label className="text-[11px] font-bold text-ocean/80 uppercase tracking-[3px] ml-4 font-outfit">Contact Number</label>
+                    <div className="relative flex items-center">
+                      <span className="absolute left-6 text-slate-400 font-bold font-outfit">+91</span>
+                      <input 
+                        type="tel" name="phone" value={formData.phone} onChange={(e) => {
+                          const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+                          handleChange({ target: { name: 'phone', value: val } });
+                        }}
+                        placeholder="00000 00000" 
+                        className="w-full pl-16 pr-8 py-5 rounded-3xl bg-slate-50 border border-ocean/5 focus:bg-white focus:border-ocean focus:ring-4 focus:ring-ocean/5 outline-none transition-all font-bold text-slate-900 placeholder:text-slate-300 font-outfit" 
+                      />
+                    </div>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <label className="text-[10px] font-black text-ocean uppercase tracking-[4px] ml-4">Message Transmission</label>
+                  <label className="text-[11px] font-bold text-ocean/80 uppercase tracking-[3px] ml-4 font-outfit">Email Channel</label>
+                  <input 
+                    type="email" name="email" required value={formData.email} onChange={handleChange}
+                    placeholder="your@email.com" 
+                    className="w-full px-8 py-5 rounded-3xl bg-slate-50 border border-ocean/5 focus:bg-white focus:border-ocean focus:ring-4 focus:ring-ocean/5 outline-none transition-all font-bold text-slate-900 placeholder:text-slate-300 font-outfit" 
+                  />
+                </div>
+
+                <div className="space-y-4">
+                  <label className="text-[11px] font-bold text-ocean/80 uppercase tracking-[3px] ml-4 font-outfit">Message Transmission</label>
                   <textarea 
                     name="message" required value={formData.message} onChange={handleChange} rows="5" 
                     placeholder="Tell us about your skincare goals..." 
-                    className="w-full px-8 py-6 rounded-[32px] bg-slate-50 border border-ocean/5 focus:bg-white focus:border-ocean focus:ring-4 focus:ring-ocean/5 outline-none transition-all resize-none font-bold text-slate-900 placeholder:text-slate-300" 
+                    className="w-full px-8 py-5 rounded-[32px] bg-slate-50 border border-ocean/5 focus:bg-white focus:border-ocean focus:ring-4 focus:ring-ocean/5 outline-none transition-all resize-none font-bold text-slate-900 placeholder:text-slate-300 font-outfit" 
                   />
                 </div>
 
@@ -156,7 +204,7 @@ const Contact = () => {
 
                 <button 
                   type="submit" disabled={isSubmitting}
-                  className="w-full bg-ocean text-white py-8 rounded-[32px] text-xs font-black uppercase tracking-[5px] hover:bg-coral transition-all duration-500 shadow-2xl shadow-ocean/20 hover:shadow-coral/30 flex items-center justify-center gap-4 group"
+                  className="btn-primary w-full py-6 rounded-[32px] flex items-center justify-center gap-4 group"
                 >
                   {isSubmitting ? 'Transmitting...' : (
                     <>Send Transmission <FiSend className="text-xl transition-transform group-hover:translate-x-2 group-hover:-translate-y-2" /></>
@@ -172,7 +220,7 @@ const Contact = () => {
       <section className="px-6 md:px-12 pb-32">
         <div className="container mx-auto h-[500px] rounded-[60px] overflow-hidden shadow-2xl border-[12px] border-white relative">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.911369796041!2d72.8208493!3d18.9322454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7d1c278065b2d%3A0xc3e23030d93962b1!2sMarine%20Drive!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d58495.648507287755!2d72.96805855000001!3d23.6051208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sin!4v1778317159293!5m2!1sen!2sin" 
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 
@@ -181,7 +229,7 @@ const Contact = () => {
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
           <div className="absolute top-8 left-8 bg-white/90 backdrop-blur-md px-6 py-3 rounded-2xl shadow-xl font-bold text-sm text-ocean border border-ocean/10">
-            Our Flagship Ritual Center
+            Our Himatnagar Ritual Center
           </div>
         </div>
       </section>

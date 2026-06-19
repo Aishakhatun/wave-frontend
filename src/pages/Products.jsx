@@ -135,14 +135,9 @@ const Products = () => {
 
                     {/* Info Section */}
                     <div className="pt-8 px-4 flex flex-col flex-1 relative">
-                      <div className="flex justify-between items-start mb-3">
-                        <h3 className="text-[28px] font-extrabold text-slate-900 font-jakarta tracking-[-0.03em] leading-tight max-w-[70%]">
+                        <h3 className="text-[28px] font-extrabold text-slate-900 font-jakarta tracking-[-0.03em] leading-tight w-full">
                           {product.name}
                         </h3>
-                        <span className="text-2xl font-black text-slate-900 tracking-tighter">
-                          ₹{product.price}
-                        </span>
-                      </div>
 
                       <p className="text-slate-500 font-medium text-sm leading-relaxed mb-6 line-clamp-2 pr-12">
                         {product.description}
@@ -249,7 +244,6 @@ const Products = () => {
                 <p className="text-ocean text-sm font-bold italic mb-6">"{selectedProduct.tagline}"</p>
 
                 <div className="flex items-center gap-6 mb-8">
-                  <span className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">₹{selectedProduct.price}</span>
                   <div className="px-4 py-2 bg-ocean/5 rounded-xl text-[9px] font-black text-ocean uppercase tracking-widest">{selectedProduct.weight || '500g'}</div>
                 </div>
 
