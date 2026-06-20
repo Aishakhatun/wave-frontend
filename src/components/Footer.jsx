@@ -92,12 +92,18 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-10 border-t border-ocean/10 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-400 text-[9px] font-black uppercase tracking-[3px] text-center md:text-left">
-          <p>&copy; {new Date().getFullYear()} The Wave Marine Bio-Care. All rights reserved.</p>
-          <div className="flex gap-10">
-            <a href="#" className="hover:text-ocean transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-ocean transition-colors">Terms of Service</a>
+        <div className="pt-10 border-t border-ocean/10 flex flex-col gap-4 text-slate-400 text-[9px] font-black uppercase tracking-[3px] text-center">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <p>© {new Date().getFullYear()} The Wave. All rights reserved.</p>
+            <div className="flex gap-10">
+              <a href="#" className="hover:text-ocean transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-ocean transition-colors">Terms of Service</a>
+            </div>
           </div>
+          <p className="text-[8px] font-medium normal-case tracking-normal text-slate-400 max-w-3xl mx-auto leading-relaxed border-t border-ocean/5 pt-4">
+            <span className="font-bold text-ocean/60 uppercase tracking-widest text-[8px]">Disclaimer: </span>
+            Dietary supplements are not intended to diagnose, treat, cure, or prevent any disease. Results may vary between individuals. Consult a healthcare professional before use if pregnant, nursing, taking medication, or under medical supervision.
+          </p>
         </div>
       </div>
     </footer>

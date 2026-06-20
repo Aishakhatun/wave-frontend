@@ -51,17 +51,17 @@ const Home = () => {
           >
 
             <motion.h1 variants={itemVariants} className="mb-6 text-slate-950 font-jakarta leading-[1.1] tracking-[-0.04em] text-4xl md:text-5xl font-black">
-              The New <br /> <span className="text-gradient">Standard of Glow</span>
+              Beauty <span className="text-gradient">Inside & Out</span>
             </motion.h1>
             <motion.p variants={itemVariants} className="text-sm md:text-base text-slate-600 mb-8 max-w-md mx-auto lg:mx-0 leading-relaxed font-medium px-4 md:px-0">
-              We bridge clinical precision with oceanic wisdom. High-potency marine minerals for visible restoration and therapeutic indulgence.
+              The Wave brings together beauty, wellness, and self-care with thoughtfully crafted products designed to help you look and feel your best every day.
             </motion.p>
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start px-6 md:px-0">
               <Link to="/products" className="btn-primary group !py-4 !px-7 text-[11px]">
-                Shop The Collection <FiArrowRight className="group-hover:translate-x-2 transition-transform" />
+                Shop Now <FiArrowRight className="group-hover:translate-x-2 transition-transform" />
               </Link>
               <Link to="/about" className="btn-outline !py-4 !px-7 text-[11px]">
-                Our Science
+                Our Products
               </Link>
             </motion.div>
 
@@ -120,7 +120,7 @@ const Home = () => {
                   <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-ocean rounded-full animate-pulse" />
                   <span className="text-[8px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest">Active Result</span>
                 </div>
-                <div className="text-sm md:text-lg font-black text-slate-900 tracking-tight leading-tight">Best Clinical Salt <br /> of the Year 2025</div>
+                <div className="text-sm md:text-lg font-black text-slate-900 tracking-tight leading-tight">Beauty & <br /> Wellness Solutions</div>
               </motion.div>
 
               {/* Background Glow */}
@@ -139,20 +139,20 @@ const Home = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <span className="section-badge">The Philosophy</span>
+              <span className="section-badge">Our Approach</span>
               <h2 className="mb-8 text-slate-900">
-                Purity from the <br /> <span className="text-gradient">Depths</span>
+                Simple. <span className="text-gradient">Effective.</span> Enjoyable.
               </h2>
               <p className="text-xl text-slate-500 mb-12 leading-relaxed font-medium">
-                We believe in the restorative intelligence of marine life. Our formulas are a dialogue between science and the sea, designed for deep restoration and cellular health.
+                From exfoliating spa salts and refreshing dry shampoos to nourishing gummies, our products support your daily beauty and wellness routine.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
-                  { icon: <FiWind />, title: "Air Tech", desc: "Aerosol-free scalp detoxification.", color: "bg-sky-pale" },
-                  { icon: <FiDroplet />, title: "Bio-Salts", desc: "84 essential trace minerals.", color: "bg-sand" },
-                  { icon: <FiLayers />, title: "Dermal Pro", desc: "Triple barrier protection.", color: "bg-sage-light" },
-                  { icon: <FiSun />, title: "Eco-UV", desc: "Marine-safe sun filters.", color: "bg-coral-light/20" }
+                  { icon: <FiDroplet />, title: "Spa Salts", desc: "Helps reveal smoother, softer, more radiant-looking skin.", color: "bg-sky-pale" },
+                  { icon: <FiWind />, title: "Dry Shampoo", desc: "Refresh hair anytime — absorbs oil, adds freshness.", color: "bg-sand" },
+                  { icon: <FiLayers />, title: "Gummies", desc: "Hair, Skin & Nails and Multivitamin daily support.", color: "bg-sage-light" },
+                  { icon: <FiSun />, title: "Wellness", desc: "Calcium + Vitamin D for bone health & daily wellness.", color: "bg-coral-light/20" }
                 ].map((item, i) => (
                   <div key={i} className={`p-8 rounded-[32px] border border-white flex flex-col gap-4 shadow-sm hover:shadow-xl transition-all ${item.color}`}>
                     <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-ocean text-xl shadow-sm">
@@ -204,23 +204,24 @@ const Home = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="relative z-10 order-2 lg:order-1">
-              <span className="section-badge !bg-ocean/5 !text-ocean">Scientific Excellence</span>
+              <span className="section-badge !bg-ocean/5 !text-ocean">Why Choose The Wave?</span>
               <h2 className="text-slate-900 mb-4 text-2xl md:text-3xl font-black leading-tight tracking-[-0.04em]">
-                Marine <span className="text-gradient">Intelligence</span>
+                Premium Quality,<br /><span className="text-gradient">Modern Lifestyles</span>
               </h2>
               <p className="text-sm text-slate-500 mb-6 leading-relaxed max-w-md font-medium">
-                Our proprietary extraction process preserves the molecular integrity of deep-sea minerals, delivering 94% higher absorption than standard synthetics.
+                We combine beauty and wellness solutions to help you care for yourself inside and out.
               </p>
 
-              <div className="flex gap-10 mb-6">
-                <div>
-                  <div className="text-3xl font-black text-slate-900 mb-1 font-jakarta tracking-tighter">12k+</div>
-                  <div className="text-[9px] font-bold text-ocean uppercase tracking-[3px]">Clinical Trials</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-black text-slate-900 mb-1 font-jakarta tracking-tighter">100%</div>
-                  <div className="text-[9px] font-bold text-ocean uppercase tracking-[3px]">Ethical Sourcing</div>
-                </div>
+              <div className="flex flex-col gap-3 mb-6">
+                {[
+                  '✓ Premium Quality Ingredients',
+                  '✓ Carefully Formulated Products',
+                  '✓ Beauty & Wellness Solutions',
+                  '✓ Designed for Modern Lifestyles',
+                  '✓ Customer-Focused Approach',
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 text-sm font-semibold text-slate-700">{item}</div>
+                ))}
               </div>
 
               <Link to="/about" className="group flex items-center gap-4 text-sm font-black uppercase tracking-[3px] text-slate-900 hover:text-ocean transition-all">

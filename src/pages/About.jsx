@@ -16,13 +16,13 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           className="container-custom text-center relative z-10"
         >
-          <span className="section-badge !bg-white !text-ocean">The Origin Story</span>
+          <span className="section-badge !bg-white !text-ocean">About The Wave</span>
           <h1 className="mb-4 text-slate-900 text-2xl md:text-3xl font-black tracking-tight">
-            The Power of the{' '}
-            <span className="text-gradient">Ocean</span>
+            Self-care that's{' '}
+            <span className="text-gradient">Simple & Effective</span>
           </h1>
           <p className="text-sm md:text-base text-slate-600 max-w-xl mx-auto leading-relaxed font-medium">
-            Bridging the gap between deep-sea biology and sensory body care rituals.
+            At The Wave, we believe self-care should be simple, effective, and enjoyable — helping you feel confident, refreshed, and supported every day.
           </p>
         </motion.div>
       </section>
@@ -42,7 +42,7 @@ const About = () => {
               </div>
               <h3 className="mb-3 font-black text-slate-900 tracking-tighter text-xl">Our Vision</h3>
               <p className="text-sm text-slate-500 leading-relaxed font-medium">
-                To redefine the standard of body care by unlocking the regenerative potential of marine ecosystems, making luxury wellness accessible to all.
+                To make beauty and wellness simple, effective, and accessible for everyone — helping people look and feel their best every single day.
               </p>
             </motion.div>
 
@@ -58,7 +58,7 @@ const About = () => {
               </div>
               <h3 className="mb-3 font-black text-white tracking-tighter text-xl">Our Mission</h3>
               <p className="text-sm text-white/80 leading-relaxed font-medium">
-                To deliver clinically effective, marine-infused formulations that honor the body's natural biology while protecting the oceans we love.
+                To create products that help people feel confident, refreshed, and supported in their everyday wellness journey — combining beauty and wellness inside and out.
               </p>
             </motion.div>
           </div>

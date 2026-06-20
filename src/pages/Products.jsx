@@ -18,79 +18,102 @@ import p5Desc  from '../assets/product5_description.jpeg';
 const PRODUCTS = [
   {
     id: 1,
-    name: 'Wave Sea Salt Scrub',
-    tagline: 'Ocean-powered exfoliation for radiant skin',
+    name: 'Intense Glowing Spa Salt',
+    tagline: 'Reveal smoother, softer, more radiant-looking skin',
     category: 'Body Care',
     badge: 'Best Seller',
-    weight: '500g',
+    weight: '200g',
     image: p2Img,
     descriptionImage: p2Desc,
     description:
-      'Infused with pure sea salts and marine botanicals, this luxurious scrub buffs away dead skin cells, revealing silky-smooth, luminous skin beneath. Rich in minerals that nourish and hydrate with every use.',
+      'Reveal smoother, softer, and more radiant-looking skin with our exfoliating spa salt.',
     ingredients: ['Sea Salt', 'Coconut Oil', 'Marine Algae'],
-    benefits: ['Exfoliates', 'Hydrates', 'Brightens'],
+    benefits: [
+      'Helps remove dead skin cells',
+      'Leaves skin feeling soft and refreshed',
+      'Supports a healthy-looking glow',
+      'Suitable for regular body care routines'
+    ],
     bgColor: '#e7f8fc',
     buyUrl: 'https://www.flipkart.com/wave-intense-glowing-spa-salt/p/itmccf5ddfe24351?pid=BSLHHVF88MDCTWRG&lid=LSTBSLHHVF88MDCTWRGI1KRTQ&marketplace=FLIPKART&q=wave+spa+salt&store=g9b%2F5nz%2Fb1b%2Fces&srno=s_1_7&otracker=search&otracker1=search&fm=Search&iid=28cbc2ca-a33a-4e0a-b5d9-feb28e8f2330.BSLHHVF88MDCTWRG.SEARCH&ppt=sp&ppn=sp&ssid=x6peoyo1r40000001781982828590&qH=7c6d920bcb584bd5&ov_redirect=true',
   },
   {
     id: 2,
-    name: 'Wave Dry Shampoo',
-    tagline: 'Fresh volume from the ocean breeze',
+    name: 'Dry Shampoo',
+    tagline: 'Refresh your hair anytime, anywhere',
     category: 'Hair Care',
     badge: 'New',
-    weight: '200ml',
+    weight: '150ml',
     image: p1Img,
     descriptionImage: p1Desc,
     description:
-      'Revive and refresh your hair instantly with our lightweight dry shampoo. Infused with ocean minerals to absorb excess oil, add incredible volume and leave hair smelling like a fresh ocean breeze.',
-    ingredients: ['Rice Starch', 'Ocean Minerals', 'Vitamin E'],
-    benefits: ['Oil Control', 'Adds Volume', 'Refreshes'],
+      'Refresh your hair anytime, anywhere.',
+    ingredients: ['Vitamin E', 'Kaolin', 'Rice Starch'],
+    benefits: [
+      'Helps absorb excess oil',
+      'Revives hair between washes',
+      'Adds freshness and volume',
+      'Convenient for busy lifestyles'
+    ],
     bgColor: '#fff4eb',
     buyUrl: 'https://www.flipkart.com/wave-dry-shampoo/p/itm9c1fa91d97dba?pid=SMPHMHJQ5PKPHMS5&lid=LSTSMPHMHJQ5PKPHMS5B56GZ3&marketplace=FLIPKART&q=wave+dry+shampoo&store=g9b%2Flcf%2Fqqm%2Ft36&srno=s_1_2&otracker=search&otracker1=search&fm=Search&iid=96e7634f-3f5d-4af6-92b4-e3127db5f437.SMPHMHJQ5PKPHMS5.SEARCH&ppt=sp&ppn=sp&ssid=fw9jh013yo0000001781982924416&qH=f41ef8a352c44c58&ov_redirect=true',
   },
   {
     id: 3,
-    name: 'Calcium + Vitamin D2 Gummies',
-    tagline: 'Strong Bones. Stronger You.',
+    name: 'Calcium + Vitamin D Gummies',
+    tagline: 'Support your daily calcium and vitamin D intake',
     category: 'Gummies',
     badge: 'Zero Sugar',
     weight: '30 Gummies',
     image: p3Img,
     descriptionImage: p3Desc,
     description:
-      'Delicious lemon-flavored gummies with zero added sugar. Calcium & Vitamin D2 work together to build strong bones, support immunity, improve calcium absorption, and keep you active — suitable for Men, Women & Kids.',
+      'A tasty way to support your daily calcium and vitamin D intake.',
     ingredients: ['Calcium (Tricalcium Phosphate)', 'Vitamin D2', 'Wheat Dextrin', 'Inulin'],
-    benefits: ['Strong Bones', 'Boosts Immunity', 'Better Absorption', 'Active Lifestyle'],
+    benefits: [
+      'Supports bone health',
+      'Helps maintain normal muscle function',
+      'Easy and enjoyable to consume'
+    ],
     bgColor: '#fffbea',
   },
   {
     id: 4,
-    name: 'Kids Vita Gummies',
-    tagline: 'Pure nutrition for growing champions',
+    name: 'Multivitamin Gummies',
+    tagline: 'Daily nutritional support to help complement a balanced lifestyle',
     category: 'Gummies',
-    badge: 'For Kids',
+    badge: 'Daily Care',
     weight: '30 Gummies',
     image: p4Img,
     descriptionImage: p4Desc,
     description:
-      'Gluten-free, no added sugar, non-GMO berry-flavored gummies enriched with Ashwagandha, Echinacea & Alfalfa. Supports immunity, brain development, healthy growth, energy & stamina — made for kids.',
+      'Daily nutritional support to help complement a balanced lifestyle.',
     ingredients: ['Ashwagandha', 'Echinacea', 'Alfalfa', 'Vitamin C', 'Vitamin D2', 'Vitamin B-Complex'],
-    benefits: ['Boosts Immunity', 'Brain Development', 'Supports Growth', 'Energy & Stamina'],
+    benefits: [
+      'Contains essential vitamins',
+      'Supports overall wellness',
+      'Convenient daily supplementation'
+    ],
     bgColor: '#fff0f5',
   },
   {
     id: 5,
-    name: 'HSN Gummies',
-    tagline: 'Nourish from within. Glow on the outside.',
+    name: 'Hair, Skin & Nails Gummies',
+    tagline: 'Nourish your beauty routine from within',
     category: 'Gummies',
-    badge: 'Hair·Skin·Nails',
+    badge: 'HSN',
     weight: '30 Gummies',
     image: p5Img,
     descriptionImage: p5Desc,
     description:
-      'Strawberry-flavored gummies powered by Sesbania Grandiflora, Grape Seed Extract & Multivitamins. Promotes stronger hair, radiant skin, strong nails, boosts immunity and energy — for Men & Women.',
+      'A delicious daily supplement designed to support your beauty routine from within.',
     ingredients: ['Sesbania Grandiflora', 'Grape Seed Extract', 'Vitamin B7 (Biotin)', 'Zinc', 'Vitamin C'],
-    benefits: ['Stronger Hair', 'Radiant Skin', 'Strong Nails', 'Boosts Immunity'],
+    benefits: [
+      'Supports healthy hair',
+      'Supports healthy skin',
+      'Supports healthy nails',
+      'Easy-to-take gummy format'
+    ],
     bgColor: '#fff0f5',
   },
 ];
@@ -130,13 +153,12 @@ const Products = () => {
             animate={{ opacity: 1, y: 0 }}
             className="flex flex-col items-center"
           >
-            <span className="section-badge">Pure Marine Extracts</span>
+            <span className="section-badge">Our Products</span>
             <h1 className="mb-4 text-slate-900 tracking-tighter text-3xl md:text-4xl font-black">
-              The Ocean <span className="text-gradient">Collection</span>
+              Beauty & <span className="text-gradient">Wellness Range</span>
             </h1>
             <p className="text-sm md:text-base text-slate-500 max-w-xl font-medium leading-relaxed">
-              Explore our range of pharmaceutical-grade body care solutions, meticulously developed
-              for immediate results and deep-sea rejuvenation.
+              From exfoliating spa salts and dry shampoos to nourishing gummies — shop our range of thoughtfully crafted beauty and wellness products.
             </p>
           </motion.div>
         </div>
