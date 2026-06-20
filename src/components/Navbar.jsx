@@ -55,29 +55,10 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-
-          <div className="flex items-center gap-6">
-            <a
-              href="https://www.instagram.com/mediglow.gs?igsh=MXE5OWUxbWhjMTA3cw=="
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-11 h-11 bg-ocean/10 text-ocean rounded-2xl flex items-center justify-center hover:bg-ocean hover:text-white transition-all duration-500 shadow-sm hover:shadow-ocean/20"
-            >
-              <FiInstagram className="text-xl" />
-            </a>
-          </div>
         </div>
 
         {/* Mobile Toggle */}
         <div className="flex lg:hidden items-center gap-4">
-          <a
-            href="https://www.instagram.com/mediglow.gs?igsh=MXE5OWUxbWhjMTA3cw=="
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-11 h-11 flex items-center justify-center rounded-xl bg-ocean/10 text-ocean"
-          >
-            <FiInstagram />
-          </a>
           <button
             className="w-11 h-11 flex items-center justify-center rounded-xl bg-sky-pale text-ocean text-xl shadow-sm border border-sky-light/10"
             onClick={() => setMenuOpen(!menuOpen)}
