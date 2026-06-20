@@ -122,19 +122,19 @@ const Products = () => {
     <div className="pt-24 pb-20 bg-pearl min-h-screen">
 
       {/* ─── Header ─── */}
-      <section className="relative py-24 px-6 md:px-12 overflow-hidden bg-[radial-gradient(circle_at_top_left,_#d6f3fb_0%,_#FDFCFB_100%)]">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-ocean/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
+      <section className="relative py-10 px-6 md:px-12 overflow-hidden bg-[radial-gradient(circle_at_top_left,_#d6f3fb_0%,_#FDFCFB_100%)]">
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-ocean/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
         <div className="container-custom relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex flex-col items-center"
           >
             <span className="section-badge">Pure Marine Extracts</span>
-            <h1 className="mb-8 text-slate-900 tracking-tighter">
+            <h1 className="mb-4 text-slate-900 tracking-tighter text-3xl md:text-4xl font-black">
               The Ocean <span className="text-gradient">Collection</span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-500 max-w-2xl font-medium leading-relaxed">
+            <p className="text-sm md:text-base text-slate-500 max-w-xl font-medium leading-relaxed">
               Explore our range of pharmaceutical-grade body care solutions, meticulously developed
               for immediate results and deep-sea rejuvenation.
             </p>

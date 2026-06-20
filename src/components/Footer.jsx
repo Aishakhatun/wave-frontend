@@ -23,34 +23,28 @@ const Footer = () => {
             <p className="text-slate-500 leading-relaxed text-sm font-medium max-w-xs">
               Harnessing the transformative power of deep-sea minerals to rejuvenate your body and soul.
             </p>
-            <div className="flex gap-3">
-              {[
-                { Icon: FiInstagram, url: 'https://www.instagram.com/mediglow.gs?igsh=MXE5OWUxbWhjMTA3cw==' }
-              ].map((social, i) => (
-                <a 
-                  key={i} 
-                  href={social.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gradient-to-tr from-ocean to-coral rounded-xl flex items-center justify-center text-white shadow-lg shadow-ocean/10 hover:scale-110 transition-all"
-                >
-                  <social.Icon className="text-lg" />
-                </a>
-              ))}
-            </div>
+            <div className="flex items-center gap-4">
+              {/* Instagram */}
+              <a 
+                href="https://www.instagram.com/mediglow.gs?igsh=MXE5OWUxbWhjMTA3cw=="
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gradient-to-tr from-ocean to-coral rounded-xl flex items-center justify-center text-white shadow-lg shadow-ocean/10 hover:scale-110 transition-all shrink-0"
+              >
+                <FiInstagram className="text-lg" />
+              </a>
 
-            {/* Quick Support QR */}
-            <div className="pt-4 flex items-center gap-4">
-              <div className="p-2 bg-white rounded-2xl border border-ocean/5 shadow-sm group">
+              {/* Quick Support QR */}
+              <div className="flex items-center gap-3 p-2 bg-white rounded-2xl border border-ocean/5 shadow-sm">
                 <img 
                   src="/images/customer-care.jpeg" 
                   alt="Customer Care" 
-                  className="w-16 h-16 object-contain group-hover:scale-105 transition-transform" 
+                  className="w-10 h-10 object-contain rounded-xl" 
                 />
-              </div>
-              <div>
-                <p className="text-[10px] font-black text-ocean uppercase tracking-widest">Support</p>
-                <p className="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Scan for Help</p>
+                <div>
+                  <p className="text-[10px] font-black text-ocean uppercase tracking-widest">Support</p>
+                  <p className="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Scan for Help</p>
+                </div>
               </div>
             </div>
           </div>

@@ -5,10 +5,10 @@ const About = () => {
   return (
     <div className="pt-24 pb-20 bg-pearl min-h-screen">
       {/* ─── About Hero ─── */}
-      <section className="relative py-24 px-6 overflow-hidden bg-sky-pale/40">
+      <section className="relative py-10 px-6 overflow-hidden bg-sky-pale/40">
         <div className="absolute inset-0 z-0 opacity-20">
-           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-light/20 rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3" />
-           <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-coral/10 rounded-full blur-[80px] -translate-x-1/4 translate-y-1/4" />
+           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-sky-light/20 rounded-full blur-[80px] translate-x-1/3 -translate-y-1/3" />
+           <div className="absolute bottom-0 left-0 w-[200px] h-[200px] bg-coral/10 rounded-full blur-[60px] -translate-x-1/4 translate-y-1/4" />
         </div>
         
         <motion.div 
@@ -17,31 +17,31 @@ const About = () => {
           className="container-custom text-center relative z-10"
         >
           <span className="section-badge !bg-white !text-ocean">The Origin Story</span>
-          <h1 className="mb-6 text-slate-900 text-3xl md:text-5xl font-black tracking-tight">
-            The Power of the <br/>
+          <h1 className="mb-4 text-slate-900 text-2xl md:text-3xl font-black tracking-tight">
+            The Power of the{' '}
             <span className="text-gradient">Ocean</span>
           </h1>
-          <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
+          <p className="text-sm md:text-base text-slate-600 max-w-xl mx-auto leading-relaxed font-medium">
             Bridging the gap between deep-sea biology and sensory body care rituals.
           </p>
         </motion.div>
       </section>
 
       {/* ─── Vision & Mission ─── */}
-      <section className="py-24 md:py-32 px-6">
+      <section className="py-12 px-6">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="p-12 md:p-20 bg-white rounded-[60px] border border-sky-pale/50 shadow-xl shadow-ocean/[0.02]"
+              className="p-8 md:p-10 bg-white rounded-[40px] border border-sky-pale/50 shadow-xl shadow-ocean/[0.02]"
             >
-              <div className="w-20 h-20 bg-sky-pale text-ocean rounded-[28px] flex items-center justify-center text-4xl mb-12 shadow-inner">
+              <div className="w-12 h-12 bg-sky-pale text-ocean rounded-2xl flex items-center justify-center text-xl mb-5 shadow-inner">
                 <FiEye />
               </div>
-              <h3 className="mb-8 font-black text-slate-900 tracking-tighter">Our Vision</h3>
-              <p className="text-xl text-slate-500 leading-relaxed font-medium">
+              <h3 className="mb-3 font-black text-slate-900 tracking-tighter text-xl">Our Vision</h3>
+              <p className="text-sm text-slate-500 leading-relaxed font-medium">
                 To redefine the standard of body care by unlocking the regenerative potential of marine ecosystems, making luxury wellness accessible to all.
               </p>
             </motion.div>
@@ -50,14 +50,14 @@ const About = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="p-12 md:p-20 bg-ocean text-white rounded-[60px] relative overflow-hidden shadow-2xl shadow-ocean/20"
+              className="p-8 md:p-10 bg-ocean text-white rounded-[40px] relative overflow-hidden shadow-2xl shadow-ocean/20"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-[80px]" />
-              <div className="w-20 h-20 bg-white/20 text-white rounded-[28px] flex items-center justify-center text-4xl mb-12 backdrop-blur-md">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-[60px]" />
+              <div className="w-12 h-12 bg-white/20 text-white rounded-2xl flex items-center justify-center text-xl mb-5 backdrop-blur-md">
                 <FiTarget />
               </div>
-              <h3 className="mb-8 font-black text-white tracking-tighter">Our Mission</h3>
-              <p className="text-xl text-white/80 leading-relaxed font-medium">
+              <h3 className="mb-3 font-black text-white tracking-tighter text-xl">Our Mission</h3>
+              <p className="text-sm text-white/80 leading-relaxed font-medium">
                 To deliver clinically effective, marine-infused formulations that honor the body's natural biology while protecting the oceans we love.
               </p>
             </motion.div>
@@ -66,11 +66,11 @@ const About = () => {
       </section>
 
       {/* ─── Values ─── */}
-      <section className="py-24 md:py-32 px-6 bg-sand/30">
+      <section className="py-12 px-6 bg-sand/30">
         <div className="container-custom">
-          <div className="text-center mb-24">
+          <div className="text-center mb-10">
             <span className="section-badge">Our Commitment</span>
-            <h2 className="text-slate-900 tracking-tighter">Deeply Rooted Values</h2>
+            <h2 className="text-slate-900 tracking-tighter text-2xl md:text-3xl font-black">Deeply Rooted Values</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
