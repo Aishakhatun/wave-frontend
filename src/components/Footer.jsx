@@ -9,15 +9,15 @@ const Footer = () => {
         <div className="absolute top-[-10%] left-[-5%] w-[400px] h-[400px] bg-ocean/5 rounded-full blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-5%] w-[300px] h-[300px] bg-coral/5 rounded-full blur-[100px]" />
       </div>
-      
+
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16 mb-16 md:mb-24">
           <div className="space-y-6 md:space-y-8">
             <Link to="/" className="flex items-center gap-4 group">
-              <img 
-                src="/images/logo.jpeg" 
-                alt="The Wave" 
-                className="h-20 md:h-28 w-auto object-contain transition-transform duration-500 group-hover:scale-105 mix-blend-multiply" 
+              <img
+                src="/images/logo.jpeg"
+                alt="The Wave"
+                className="h-20 md:h-28 w-auto object-contain transition-transform duration-500 group-hover:scale-105 mix-blend-multiply"
               />
             </Link>
             <p className="text-slate-500 leading-relaxed text-sm font-medium max-w-xs">
@@ -25,9 +25,9 @@ const Footer = () => {
             </p>
             <div className="flex items-center gap-4">
               {/* Instagram */}
-              <a 
-                href="https://www.instagram.com/mediglow.gs?igsh=MXE5OWUxbWhjMTA3cw=="
-                target="_blank" 
+              <a
+                href="https://www.instagram.com/thewave.glowwithflow/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gradient-to-tr from-ocean to-coral rounded-xl flex items-center justify-center text-white shadow-lg shadow-ocean/10 hover:scale-110 transition-all shrink-0"
               >
@@ -36,10 +36,10 @@ const Footer = () => {
 
               {/* Quick Support QR */}
               <div className="flex items-center gap-3 p-2 bg-white rounded-2xl border border-ocean/5 shadow-sm">
-                <img 
-                  src="/images/customer-care.jpeg" 
-                  alt="Customer Care" 
-                  className="w-10 h-10 object-contain rounded-xl" 
+                <img
+                  src="/images/customer-care.jpeg"
+                  alt="Customer Care"
+                  className="w-10 h-10 object-contain rounded-xl"
                 />
                 <div>
                   <p className="text-[10px] font-black text-ocean uppercase tracking-widest">Support</p>
@@ -92,7 +92,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-10 border-t border-ocean/10 flex flex-col gap-4 text-slate-400 text-[9px] font-black uppercase tracking-[3px] text-center">
+        {/* <div className="pt-10 border-t border-ocean/10 flex flex-col gap-4 text-slate-400 text-[9px] font-black uppercase tracking-[3px] text-center">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <p>© {new Date().getFullYear()} The Wave. All rights reserved.</p>
             <div className="flex gap-10">
@@ -104,7 +104,7 @@ const Footer = () => {
             <span className="font-bold text-ocean/60 uppercase tracking-widest text-[8px]">Disclaimer: </span>
             Dietary supplements are not intended to diagnose, treat, cure, or prevent any disease. Results may vary between individuals. Consult a healthcare professional before use if pregnant, nursing, taking medication, or under medical supervision.
           </p>
-        </div>
+        </div> */}
       </div>
     </footer>
   );
