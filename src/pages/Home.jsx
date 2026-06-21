@@ -102,7 +102,7 @@ const Home = () => {
               <motion.div
                 animate={{ y: [0, -20, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-[15%] -right-8 md:-right-24 z-20 bg-white/90 backdrop-blur-xl p-4 md:p-6 rounded-[24px] md:rounded-[32px] shadow-2xl border border-white flex flex-col items-center gap-1.5 md:gap-2"
+                className="hidden md:flex absolute top-[15%] -right-8 md:-right-24 z-20 bg-white/90 backdrop-blur-xl p-4 md:p-6 rounded-[24px] md:rounded-[32px] shadow-2xl border border-white flex-col items-center gap-1.5 md:gap-2"
               >
                 <div className="w-8 h-8 md:w-10 md:h-10 bg-sky-pale rounded-xl md:rounded-2xl flex items-center justify-center text-ocean text-base md:text-lg shadow-inner">
                   <FiStar />

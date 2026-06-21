@@ -3,16 +3,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiSearch, FiFilter, FiChevronLeft, FiChevronRight, FiMapPin } from 'react-icons/fi';
 
 // ── Local product images ──────────────────────────────────────────────────────
-import p1Img   from '../assets/product1.jpeg';
-import p1Desc  from '../assets/product1_description.jpeg';
-import p2Img   from '../assets/product2.jpeg';
-import p2Desc  from '../assets/product2_description.jpeg';
-import p3Img   from '../assets/product3.png';
-import p3Desc  from '../assets/product3_description.jpeg';
-import p4Img   from '../assets/product4.png';
-import p4Desc  from '../assets/product4_description.jpeg';
-import p5Img   from '../assets/product5.png';
-import p5Desc  from '../assets/product5_description.jpeg';
+import p1Img from '../assets/product1.jpeg';
+import p1Desc from '../assets/product1_description.jpeg';
+import p2Img from '../assets/product2.jpeg';
+import p2Desc from '../assets/product2_description.jpeg';
+import p3Img from '../assets/product3.png';
+import p3Desc from '../assets/product3_description.jpeg';
+import p4Img from '../assets/product4.png';
+import p4Desc from '../assets/product4_description.jpeg';
+import p5Img from '../assets/product5.png';
+import p5Desc from '../assets/product5_description.jpeg';
 
 // ── Static product data ───────────────────────────────────────────────────────
 const PRODUCTS = [
@@ -120,18 +120,18 @@ const PRODUCTS = [
 
 // ── Component ─────────────────────────────────────────────────────────────────
 const Products = () => {
-  const [filter, setFilter]               = useState('All');
-  const [search, setSearch]               = useState('');
+  const [filter, setFilter] = useState('All');
+  const [search, setSearch] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [currentImg, setCurrentImg]       = useState(0); // 0 = product img, 1 = desc img
+  const [currentImg, setCurrentImg] = useState(0); // 0 = product img, 1 = desc img
 
   useEffect(() => {
     if (!selectedProduct) setCurrentImg(0);
   }, [selectedProduct]);
 
-  const categories    = ['All', ...new Set(PRODUCTS.map(p => p.category))];
+  const categories = ['All', ...new Set(PRODUCTS.map(p => p.category))];
   const filteredProducts = PRODUCTS.filter(p => {
-    const matchCat    = filter === 'All' || p.category === filter;
+    const matchCat = filter === 'All' || p.category === filter;
     const matchSearch = p.name.toLowerCase().includes(search.toLowerCase());
     return matchCat && matchSearch;
   });
@@ -173,11 +173,10 @@ const Products = () => {
               {categories.map(cat => (
                 <button
                   key={cat}
-                  className={`whitespace-nowrap px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
-                    filter === cat
+                  className={`whitespace-nowrap px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${filter === cat
                       ? 'bg-ocean text-white shadow-xl shadow-ocean/20 scale-105'
                       : 'bg-white text-slate-500 border border-ocean/10 hover:border-ocean hover:text-ocean'
-                  }`}
+                    }`}
                   onClick={() => setFilter(cat)}
                 >
                   {cat}
@@ -217,8 +216,7 @@ const Products = () => {
                 >
                   {/* Image card */}
                   <div
-                    className="relative h-72 rounded-[40px] overflow-hidden transition-transform duration-700 group-hover:scale-[1.03] flex items-center justify-center p-4"
-                    style={{ backgroundColor: product.bgColor }}
+                    className="relative h-72 rounded-[40px] overflow-hidden transition-transform duration-700 group-hover:scale-[1.03] flex items-center justify-center p-4 bg-white border border-slate-100 shadow-sm"
                   >
                     <img
                       src={product.image}
@@ -259,8 +257,8 @@ const Products = () => {
                           }}
                         >
                           <svg className="w-3 h-3 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3.5 6H20.5M16 10a4 4 0 01-8 0"/>
-                            <path d="M7 2v4M17 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/>
+                            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3.5 6H20.5M16 10a4 4 0 01-8 0" />
+                            <path d="M7 2v4M17 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01" />
                           </svg>
                           Buy Now
                         </a>
@@ -293,44 +291,62 @@ const Products = () => {
       {/* ─── Modal ─── */}
       <AnimatePresence>
         {selectedProduct && (
-          <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4 md:p-8">
+          <div className="fixed inset-0 z-[2000] flex items-end sm:items-center justify-center">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-slate-900/40 backdrop-blur-md"
+              className="absolute inset-0 bg-slate-900/50 backdrop-blur-md"
               onClick={() => setSelectedProduct(null)}
             />
 
             {/* Panel */}
             <motion.div
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 50, scale: 0.9 }}
-              className="relative w-full max-w-4xl bg-white rounded-[50px] overflow-hidden shadow-[0_50px_100px_rgba(26,143,181,0.2)] flex flex-col lg:flex-row"
+              initial={{ opacity: 0, y: '100%' }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: '100%' }}
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              className="relative w-full max-w-4xl bg-white rounded-t-[36px] sm:rounded-[40px] shadow-[0_-20px_80px_rgba(26,143,181,0.18)] flex flex-col lg:flex-row max-h-[93vh] overflow-hidden"
             >
+              {/* Mobile Pull Bar */}
+              <div className="lg:hidden flex justify-center pt-3 pb-1 absolute top-0 left-0 right-0 z-30">
+                <div className="w-10 h-1 bg-slate-200 rounded-full" />
+              </div>
+
               {/* Close */}
               <button
-                className="absolute top-6 right-6 w-10 h-10 bg-white/90 backdrop-blur rounded-xl flex items-center justify-center text-ocean shadow-xl z-20 hover:scale-110 transition-transform"
+                className="absolute top-5 right-5 w-9 h-9 bg-white/95 backdrop-blur rounded-full flex items-center justify-center text-slate-400 shadow-lg z-20 hover:scale-110 hover:text-ocean transition-all"
                 onClick={() => setSelectedProduct(null)}
               >
-                <FiX className="text-xl" />
+                <FiX className="text-base" />
               </button>
 
-              {/* Image carousel — product img + description img */}
+              {/* Image Section */}
               <div
-                className="w-full lg:w-[45%] relative flex items-center justify-center shrink-0 overflow-hidden min-h-[280px] lg:min-h-[460px]"
-                style={{ backgroundColor: selectedProduct.bgColor }}
+                className="w-full lg:w-[42%] relative flex items-center justify-center shrink-0 overflow-hidden bg-white"
+                style={{ minHeight: '220px' }}
               >
+                {/* Subtle color accent — bottom only, small */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-1.5 opacity-60"
+                  style={{ background: selectedProduct.bgColor }}
+                />
+
+                {/* Slide label */}
+                <div className="absolute top-8 left-5 lg:top-6 lg:left-6 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full text-[8px] font-black text-ocean uppercase tracking-[2px] shadow-sm z-10">
+                  {currentImg === 0 ? '📦 Product' : '🔍 Details'}
+                </div>
+
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={currentImg}
                     src={modalImages[currentImg]}
                     alt={selectedProduct.name}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, scale: 0.92 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.92 }}
+                    transition={{ duration: 0.35 }}
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
                     onDragEnd={(_, { offset }) => {
@@ -339,141 +355,145 @@ const Products = () => {
                       if (offset.x > 50 && currentImg > 0)
                         setCurrentImg(c => c - 1);
                     }}
-                    className="w-full h-auto max-h-[280px] lg:max-h-[460px] object-contain drop-shadow-2xl cursor-grab active:cursor-grabbing p-8"
+                    className="w-full object-contain drop-shadow-xl cursor-grab active:cursor-grabbing relative z-10 py-6 px-10 max-h-[200px] sm:max-h-[260px] lg:max-h-[460px]"
                   />
                 </AnimatePresence>
 
-                {/* Arrows */}
+                {/* Nav Arrows */}
                 <button
                   onClick={() => currentImg > 0 && setCurrentImg(c => c - 1)}
-                  className={`absolute left-4 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-ocean shadow-lg transition-all ${currentImg === 0 ? 'opacity-0 pointer-events-none' : 'opacity-100 hover:scale-110'}`}
+                  className={`absolute left-3 w-9 h-9 bg-white/90 backdrop-blur rounded-full flex items-center justify-center text-ocean shadow-md transition-all z-10 ${currentImg === 0 ? 'opacity-0 pointer-events-none' : 'opacity-100 hover:scale-110'}`}
                 >
-                  <FiChevronLeft className="text-xl" />
+                  <FiChevronLeft />
                 </button>
                 <button
                   onClick={() => currentImg < modalImages.length - 1 && setCurrentImg(c => c + 1)}
-                  className={`absolute right-4 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-ocean shadow-lg transition-all ${currentImg === modalImages.length - 1 ? 'opacity-0 pointer-events-none' : 'opacity-100 hover:scale-110'}`}
+                  className={`absolute right-3 w-9 h-9 bg-white/90 backdrop-blur rounded-full flex items-center justify-center text-ocean shadow-md transition-all z-10 ${currentImg === modalImages.length - 1 ? 'opacity-0 pointer-events-none' : 'opacity-100 hover:scale-110'}`}
                 >
-                  <FiChevronRight className="text-xl" />
+                  <FiChevronRight />
                 </button>
 
                 {/* Dots */}
-                <div className="absolute bottom-6 flex gap-2">
+                <div className="absolute bottom-4 flex gap-1.5 z-10">
                   {modalImages.map((_, idx) => (
                     <button
                       key={idx}
                       onClick={() => setCurrentImg(idx)}
-                      className={`rounded-full transition-all ${currentImg === idx ? 'w-6 h-2 bg-ocean' : 'w-2 h-2 bg-ocean/25'}`}
+                      className={`rounded-full transition-all duration-300 ${currentImg === idx ? 'w-5 h-1.5 bg-ocean' : 'w-1.5 h-1.5 bg-ocean/30'}`}
                     />
                   ))}
                 </div>
-
-                {/* Slide label */}
-                <div className="absolute top-6 left-6 bg-white/80 backdrop-blur px-3 py-1 rounded-full text-[9px] font-black text-ocean uppercase tracking-[2px]">
-                  {currentImg === 0 ? 'Product' : 'Details'}
-                </div>
               </div>
 
-              {/* Info panel */}
-              <div className="w-full lg:w-[55%] p-8 md:p-12 flex flex-col justify-center">
-                <span className="section-badge !mb-4 self-start !text-[8px] !px-3 !py-1">
-                  {selectedProduct.category}
-                </span>
-                <h2 className="text-3xl md:text-4xl font-black mb-2 text-slate-900 tracking-tighter leading-none">
-                  {selectedProduct.name}
-                </h2>
-                <p className="text-ocean text-sm font-bold italic mb-6">
-                  "{selectedProduct.tagline}"
-                </p>
+              {/* Info Panel */}
+              <div className="w-full lg:w-[58%] flex flex-col overflow-y-auto">
+                <div className="p-6 sm:p-8 lg:p-10 flex flex-col gap-5 flex-1">
 
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="px-4 py-2 bg-ocean/5 rounded-xl text-[9px] font-black text-ocean uppercase tracking-widest">
-                    {selectedProduct.weight}
-                  </div>
-                  <div className="px-4 py-2 bg-emerald-50 rounded-xl text-[9px] font-black text-emerald-600 uppercase tracking-widest">
-                    {selectedProduct.badge}
-                  </div>
-                </div>
-
-                <div className="space-y-6">
+                  {/* Header */}
                   <div>
-                    <h4 className="font-black text-slate-300 mb-2 text-[9px] uppercase tracking-[4px]">
-                      About
-                    </h4>
-                    <p className="text-slate-500 text-sm leading-relaxed font-medium">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="px-3 py-1 bg-ocean/10 text-ocean text-[9px] font-black uppercase tracking-[2px] rounded-full">
+                        {selectedProduct.category}
+                      </span>
+                      {selectedProduct.badge && (
+                        <span className="px-3 py-1 bg-emerald-50 text-emerald-600 text-[9px] font-black uppercase tracking-[2px] rounded-full">
+                          {selectedProduct.badge}
+                        </span>
+                      )}
+                    </div>
+                    <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight leading-tight mb-1">
+                      {selectedProduct.name}
+                    </h2>
+                    <p className="text-ocean/80 text-[13px] font-semibold italic leading-snug">
+                      "{selectedProduct.tagline}"
+                    </p>
+                  </div>
+
+                  {/* Weight chip */}
+                  <div className="flex items-center gap-2">
+                    <span className="px-4 py-1.5 bg-slate-50 border border-slate-100 rounded-xl text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                      {selectedProduct.weight}
+                    </span>
+                  </div>
+
+                  {/* About */}
+                  <div className="bg-slate-50 rounded-2xl p-4">
+                    <p className="text-[9px] font-black text-slate-300 uppercase tracking-[3px] mb-1.5">About</p>
+                    <p className="text-slate-600 text-sm leading-relaxed font-medium">
                       {selectedProduct.description}
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-6">
-                    <div>
-                      <h4 className="font-black text-slate-300 mb-2 text-[9px] uppercase tracking-[4px]">
-                        Key Ingredients
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedProduct.ingredients.map(ing => (
-                          <span
-                            key={ing}
-                            className="px-3 py-1.5 bg-white rounded-lg text-[10px] font-bold text-slate-600 border border-ocean/10 shadow-sm"
-                          >
-                            {ing}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="font-black text-slate-300 mb-2 text-[9px] uppercase tracking-[4px]">
-                        Benefits
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedProduct.benefits.map(ben => (
-                          <span
-                            key={ben}
-                            className="px-3 py-1.5 bg-ocean/5 rounded-lg text-[10px] font-bold text-ocean border border-ocean/10 shadow-sm"
-                          >
-                            {ben}
-                          </span>
-                        ))}
-                      </div>
+                  {/* Ingredients */}
+                  <div>
+                    <p className="text-[9px] font-black text-slate-300 uppercase tracking-[3px] mb-2.5">Key Ingredients</p>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProduct.ingredients.map(ing => (
+                        <span
+                          key={ing}
+                          className="px-3 py-1.5 bg-white rounded-xl text-[11px] font-bold text-slate-700 border border-slate-100 shadow-sm"
+                        >
+                          🌿 {ing}
+                        </span>
+                      ))}
                     </div>
                   </div>
 
-                  {/* CTA — Buy on Flipkart OR Available on Store Only */}
-                  {selectedProduct.buyUrl ? (
-                    <a
-                      href={selectedProduct.buyUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full bg-[#2874f0] text-white py-5 rounded-[24px] text-[11px] font-black uppercase tracking-[4px] hover:bg-[#1a5fd4] transition-all duration-300 shadow-xl shadow-blue-500/20 flex items-center justify-center gap-3"
-                    >
-                      <img
-                        src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fk-logo-b14e1ece.png"
-                        alt="Flipkart"
-                        className="h-4 object-contain brightness-0 invert"
-                      />
-                      Buy on Flipkart
-                    </a>
-                  ) : (
-                    <div className="w-full bg-ocean/5 border-2 border-ocean/20 py-5 rounded-[24px] flex flex-col items-center justify-center gap-2">
-                      <div className="flex items-center gap-2">
-                        <FiMapPin className="text-ocean text-base" />
-                        <span className="text-ocean text-[11px] font-black uppercase tracking-[4px]">
-                          Available on Store Only
-                        </span>
-                      </div>
-                      <p className="text-slate-400 text-[10px] font-medium">
-                        Visit your nearest Wave outlet to purchase
-                      </p>
+                  {/* Benefits */}
+                  <div>
+                    <p className="text-[9px] font-black text-slate-300 uppercase tracking-[3px] mb-2.5">Benefits</p>
+                    <div className="flex flex-col gap-2">
+                      {selectedProduct.benefits.map(ben => (
+                        <div key={ben} className="flex items-start gap-2.5">
+                          <div className="w-4 h-4 rounded-full bg-ocean/10 flex items-center justify-center shrink-0 mt-0.5">
+                            <div className="w-1.5 h-1.5 rounded-full bg-ocean" />
+                          </div>
+                          <span className="text-slate-600 text-[13px] font-medium leading-snug">{ben}</span>
+                        </div>
+                      ))}
                     </div>
-                  )}
+                  </div>
+
+                  {/* CTA */}
+                  <div className="mt-auto pt-2">
+                    {selectedProduct.buyUrl ? (
+                      <a
+                        href={selectedProduct.buyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl text-white text-[10px] font-black uppercase tracking-[2px] transition-all duration-300 hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]"
+                        style={{
+                          background: 'linear-gradient(135deg, #2874f0 0%, #0f52ba 100%)',
+                          boxShadow: '0 6px 20px rgba(40,116,240,0.3)',
+                        }}
+                      >
+                        Buy on Flipkart
+                      </a>
+                    ) : (
+                      <div className="w-full bg-gradient-to-r from-ocean/5 to-ocean/10 border border-ocean/15 py-4 rounded-2xl flex flex-col items-center justify-center gap-1.5">
+                        <div className="flex items-center gap-2">
+                          <FiMapPin className="text-ocean text-sm" />
+                          <span className="text-ocean text-[11px] font-black uppercase tracking-[3px]">
+                            Available In-Store
+                          </span>
+                        </div>
+                        <p className="text-slate-400 text-[11px] font-medium">
+                          Visit your nearest Wave outlet
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
                 </div>
               </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
+
     </div>
   );
 };
 
 export default Products;
+
