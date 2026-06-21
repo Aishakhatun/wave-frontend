@@ -29,9 +29,9 @@ const Footer = () => {
                 href="https://www.instagram.com/thewave.glowwithflow/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gradient-to-tr from-ocean to-coral rounded-xl flex items-center justify-center text-white shadow-lg shadow-ocean/10 hover:scale-110 transition-all shrink-0"
+                className="w-11 h-11 bg-ocean/10 text-ocean rounded-2xl flex items-center justify-center hover:bg-ocean hover:text-white transition-all duration-500 shadow-sm hover:shadow-ocean/20 shrink-0"
               >
-                <FiInstagram className="text-lg" />
+                <FiInstagram className="text-xl" />
               </a>
 
               {/* Quick Support QR */}
