@@ -27,11 +27,11 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${scrolled ? 'py-4 bg-white/95 backdrop-blur-xl shadow-lg shadow-ocean/5' : 'py-8 bg-transparent'
+    <nav className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${scrolled ? 'py-2 md:py-4 bg-white/95 backdrop-blur-xl shadow-lg shadow-ocean/5' : 'py-4 md:py-8 bg-transparent'
       }`}>
       <div className="container-custom flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="relative h-18 w-18 md:h-24 md:w-24 rounded-full overflow-hidden border-2 border-ocean/20 shadow-[0_4px_25px_rgba(26,143,181,0.12)] transition-all duration-500 group-hover:scale-105 group-hover:border-ocean/45 group-hover:shadow-[0_8px_35px_rgba(26,143,181,0.25)] flex items-center justify-center bg-white">
+          <div className="relative h-14 w-14 md:h-24 md:w-24 rounded-full overflow-hidden border-2 border-ocean/20 shadow-[0_4px_25px_rgba(26,143,181,0.12)] transition-all duration-500 group-hover:scale-105 group-hover:border-ocean/45 group-hover:shadow-[0_8px_35px_rgba(26,143,181,0.25)] flex items-center justify-center bg-white">
             <img
               src={mainLogo}
               alt="The Wave"
