@@ -3,7 +3,7 @@ import { FiTarget, FiEye, FiHeart, FiShield, FiActivity, FiDroplet } from 'react
 
 const About = () => {
   return (
-    <div className="pt-32 pb-20 bg-pearl min-h-screen">
+    <div className="pt-24 md:pt-32 pb-20 bg-pearl min-h-screen">
       {/* ─── About Hero ─── */}
       <section className="relative py-10 px-6 overflow-hidden bg-sky-pale/40">
         <div className="absolute inset-0 z-0 opacity-20">

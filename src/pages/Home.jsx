@@ -142,7 +142,7 @@ const Home = () => {
   return (
     <div className="overflow-hidden bg-pearl" ref={scrollRef}>
       {/* ─── Hero Section ─── */}
-      <section className="relative min-h-[65vh] flex items-center pt-36 lg:pt-40 pb-10 px-6 lg:px-0">
+      <section className="relative min-h-[65vh] flex items-center pt-24 md:pt-36 lg:pt-40 pb-10 px-6 lg:px-0">
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-[-1] bg-[radial-gradient(circle_at_70%_20%,_#d6f3fb_0%,_#FDFCFB_100%)]" />
         <div className="absolute top-[10%] right-[10%] w-[500px] h-[500px] bg-ocean/5 rounded-full blur-[120px] pointer-events-none animate-pulse-soft" />

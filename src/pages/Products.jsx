@@ -142,7 +142,7 @@ const Products = () => {
     : [];
 
   return (
-    <div className="pt-32 pb-20 bg-pearl min-h-screen">
+    <div className="pt-24 md:pt-32 pb-20 bg-pearl min-h-screen">
 
       {/* ─── Header ─── */}
       <section className="relative py-10 px-6 md:px-12 overflow-hidden bg-[radial-gradient(circle_at_top_left,_#d6f3fb_0%,_#FDFCFB_100%)]">
