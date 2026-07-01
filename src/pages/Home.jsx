@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiArrowRight, FiDroplet, FiStar, FiLayers, FiWind, FiSun } from 'react-icons/fi';
 import { useRef, useState, useEffect } from 'react';
 
@@ -94,9 +94,15 @@ const Home = () => {
   const { scrollYProgress } = useScroll();
   const waveX = useTransform(scrollYProgress, [0, 1], [0, -300]);
 
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeShowcase, setActiveShowcase] = useState(0);
   const [activeItemIndex, setActiveItemIndex] = useState(0);
+
+  const handleBuyNow = () => {
+    const prodName = SHOWCASE_PRODUCTS[activeShowcase].items[activeItemIndex].name;
+    navigate('/products', { state: { selectedProductName: prodName } });
+  };
 
   // Reset activeItemIndex when category changes
   useEffect(() => {
@@ -330,9 +336,17 @@ const Home = () => {
                 >
                   {/* Text details */}
                   <div className="flex-1 flex flex-col items-start text-left">
-                    <span className={`px-2.5 py-0.5 rounded-full text-[8px] font-black uppercase tracking-[2px] mb-2 ${SHOWCASE_PRODUCTS[activeShowcase].pillBg} ${SHOWCASE_PRODUCTS[activeShowcase].pillText}`}>
-                      {SHOWCASE_PRODUCTS[activeShowcase].badge}
-                    </span>
+                    <div className="flex items-center justify-between w-full mb-3">
+                      <span className={`px-2.5 py-0.5 rounded-full text-[8px] font-black uppercase tracking-[2px] ${SHOWCASE_PRODUCTS[activeShowcase].pillBg} ${SHOWCASE_PRODUCTS[activeShowcase].pillText}`}>
+                        {SHOWCASE_PRODUCTS[activeShowcase].badge}
+                      </span>
+                      <button
+                        onClick={handleBuyNow}
+                        className="btn-primary !py-1.5 !px-4 text-[9px] font-black tracking-wider uppercase rounded-full shadow-md hover:scale-105 active:scale-95 transition-all"
+                      >
+                        Buy Now
+                      </button>
+                    </div>
                     <h3 className="text-lg md:text-xl font-black text-slate-900 leading-tight mb-1 font-jakarta tracking-tight">
                       {SHOWCASE_PRODUCTS[activeShowcase].items[activeItemIndex].name}
                     </h3>

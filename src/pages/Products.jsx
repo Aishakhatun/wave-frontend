@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiSearch, FiFilter, FiChevronLeft, FiChevronRight, FiMapPin } from 'react-icons/fi';
+import { useLocation } from 'react-router-dom';
 
 // ── Local product images ──────────────────────────────────────────────────────
 import p1Img from '../assets/product1.jpeg';
@@ -120,6 +121,7 @@ const PRODUCTS = [
 
 // ── Component ─────────────────────────────────────────────────────────────────
 const Products = () => {
+  const location = useLocation();
   const [filter, setFilter] = useState('All');
   const [search, setSearch] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -128,6 +130,15 @@ const Products = () => {
   useEffect(() => {
     if (!selectedProduct) setCurrentImg(0);
   }, [selectedProduct]);
+
+  useEffect(() => {
+    if (location.state?.selectedProductName) {
+      const match = PRODUCTS.find(p => p.name === location.state.selectedProductName);
+      if (match) {
+        setSelectedProduct(match);
+      }
+    }
+  }, [location.state]);
 
   const categories = ['All', ...new Set(PRODUCTS.map(p => p.category))];
   const filteredProducts = PRODUCTS.filter(p => {
