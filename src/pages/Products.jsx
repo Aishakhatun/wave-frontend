@@ -145,7 +145,7 @@ const Products = () => {
     <div className="pt-24 md:pt-32 pb-20 bg-pearl min-h-screen">
 
       {/* ─── Header ─── */}
-      <section className="relative py-10 px-6 md:px-12 overflow-hidden bg-[radial-gradient(circle_at_top_left,_#d6f3fb_0%,_#FDFCFB_100%)]">
+      <section className="relative py-6 md:py-10 px-6 md:px-12 overflow-hidden bg-[radial-gradient(circle_at_top_left,_#d6f3fb_0%,_#FDFCFB_100%)]">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-ocean/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
         <div className="container-custom relative z-10 text-center">
           <motion.div
@@ -165,15 +165,28 @@ const Products = () => {
       </section>
 
       {/* ─── Filter Bar ─── */}
-      <section className="sticky top-[80px] z-50 px-4 md:px-12 mb-16">
+      <section className="sticky top-[70px] z-50 px-4 md:px-12 mb-8 md:mb-16">
         <div className="container-custom">
-          <div className="glass-card p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl bg-white/60">
-            <div className="flex items-center gap-4 overflow-x-auto no-scrollbar py-2 w-full md:w-auto">
-              <FiFilter className="text-ocean shrink-0 ml-2" />
+          <div className="glass-card p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 shadow-2xl bg-white/60">
+            {/* Search Input - Top on Mobile, Right on Desktop */}
+            <div className="relative group w-full md:w-auto order-1 md:order-2">
+              <FiSearch className="absolute left-5 top-1/2 -translate-y-1/2 text-ocean group-focus-within:text-coral transition-colors" />
+              <input
+                type="text"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                placeholder="Search products..."
+                className="bg-white border border-ocean/10 rounded-full pl-12 pr-6 py-3.5 md:py-4 text-xs font-bold focus:outline-none focus:border-ocean focus:ring-4 focus:ring-ocean/5 transition-all w-full md:w-72"
+              />
+            </div>
+
+            {/* Filter Buttons - Bottom on Mobile, Left on Desktop */}
+            <div className="flex items-center gap-2 md:gap-4 overflow-x-auto no-scrollbar py-1 w-full md:w-auto order-2 md:order-1">
+              <FiFilter className="text-ocean shrink-0 ml-1 md:ml-2" />
               {categories.map(cat => (
                 <button
                   key={cat}
-                  className={`whitespace-nowrap px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${filter === cat
+                  className={`whitespace-nowrap px-4 py-2.5 md:px-8 md:py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${filter === cat
                       ? 'bg-ocean text-white shadow-xl shadow-ocean/20 scale-105'
                       : 'bg-white text-slate-500 border border-ocean/10 hover:border-ocean hover:text-ocean'
                     }`}
@@ -182,17 +195,6 @@ const Products = () => {
                   {cat}
                 </button>
               ))}
-            </div>
-
-            <div className="relative group w-full md:w-auto">
-              <FiSearch className="absolute left-5 top-1/2 -translate-y-1/2 text-ocean group-focus-within:text-coral transition-colors" />
-              <input
-                type="text"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-                placeholder="Search products..."
-                className="bg-white border border-ocean/10 rounded-full pl-12 pr-6 py-4 text-xs font-bold focus:outline-none focus:border-ocean focus:ring-4 focus:ring-ocean/5 transition-all w-full md:w-72"
-              />
             </div>
           </div>
         </div>
