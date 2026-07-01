@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Double Circular Borders -->
+  <circle cx="256" cy="256" r="236" fill="#f0f9ff" stroke="#0284c7" stroke-width="14" />
+  <circle cx="256" cy="256" r="218" stroke="#0284c7" stroke-width="6" />
+
+  <!-- Clip path to keep wave inside the inner circle -->
+  <g clip-path="url(#circle-clip)">
+    <clipPath id="circle-clip">
+      <circle cx="256" cy="256" r="215" />
+    </clipPath>
+
+    <!-- Sky / Background -->
+    <rect x="0" y="0" width="512" height="512" fill="#e0f2fe" />
+
+    <!-- Birds -->
+    <path d="M330 200 C333 194, 342 194, 346 202 C350 194, 359 194, 362 200" stroke="#0284c7" stroke-width="5" stroke-linecap="round" fill="none" />
+    <path d="M290 235 C293 230, 300 230, 304 237 C308 230, 315 230, 318 235" stroke="#0284c7" stroke-width="4" stroke-linecap="round" fill="none" />
+    <path d="M340 245 C342 241, 348 241, 351 247 C354 241, 360 241, 362 245" stroke="#0284c7" stroke-width="4" stroke-linecap="round" fill="none" />
+
+    <!-- Wave Body -->
+    <path d="M-20 520 C-20 380, 60 160, 240 120 C340 180, 260 300, 370 320 C430 330, 530 350, 530 520 Z" fill="#0284c7" />
+    
+    <!-- Wave Inner Texture / Shading (Layers of blue) -->
+    <!-- Medium Blue -->
+    <path d="M-20 520 C0 390, 90 180, 230 140 C300 190, 250 280, 350 310 C400 320, 530 350, 530 520 Z" fill="#0ea5e9" />
+    <!-- Light Blue -->
+    <path d="M-20 520 C20 400, 120 200, 220 160 C270 200, 240 270, 330 300 C370 310, 530 350, 530 520 Z" fill="#38bdf8" />
+    <!-- Deep Blue Shadow -->
+    <path d="M-20 520 C-10 430, 60 280, 180 220 C220 250, 230 290, 310 320 C350 330, 530 370, 530 520 Z" fill="#0369a1" />
+
+    <!-- Wave Lines / Highlights -->
+    <path d="M40 520 C40 400, 110 240, 200 180" stroke="#e0f2fe" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.6" />
+    <path d="M90 520 C90 420, 150 280, 210 220" stroke="#e0f2fe" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.6" />
+    <path d="M140 520 C140 440, 180 330, 220 270" stroke="#e0f2fe" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.6" />
+
+    <!-- Foam / Crest at the peak of the wave (Curling over) -->
+    <!-- Beautiful overlapping circles/paths representing fluffiness -->
+    <path d="M140 140 C140 100, 240 70, 320 160 C325 165, 330 170, 330 180 C300 200, 220 200, 180 180 Z" fill="#ffffff" stroke="#0284c7" stroke-width="6" />
+    
+    <!-- Fine foam details -->
+    <circle cx="160" cy="140" r="22" fill="#ffffff" stroke="#0284c7" stroke-width="6" />
+    <circle cx="190" cy="120" r="25" fill="#ffffff" stroke="#0284c7" stroke-width="6" />
+    <circle cx="225" cy="115" r="25" fill="#ffffff" stroke="#0284c7" stroke-width="6" />
+    <circle cx="260" cy="120" r="25" fill="#ffffff" stroke="#0284c7" stroke-width="6" />
+    <circle cx="295" cy="135" r="24" fill="#ffffff" stroke="#0284c7" stroke-width="6" />
+    <circle cx="315" cy="165" r="20" fill="#ffffff" stroke="#0284c7" stroke-width="6" />
+    <circle cx="320" cy="190" r="15" fill="#ffffff" stroke="#0284c7" stroke-width="6" />
+
+    <!-- Overlay solid fills to hide internal outlines of foam circles -->
+    <circle cx="160" cy="140" r="19" fill="#ffffff" />
+    <circle cx="190" cy="120" r="22" fill="#ffffff" />
+    <circle cx="225" cy="115" r="22" fill="#ffffff" />
+    <circle cx="260" cy="120" r="22" fill="#ffffff" />
+    <circle cx="295" cy="135" r="21" fill="#ffffff" />
+    <circle cx="315" cy="165" r="17" fill="#ffffff" />
+    <circle cx="320" cy="190" r="12" fill="#ffffff" />
+  </g>
+</svg>
