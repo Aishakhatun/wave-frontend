@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FiInstagram, FiMail, FiPhone, FiMapPin, FiTwitter, FiDroplet } from 'react-icons/fi';
+import mainLogo from '../assets/mainlogo_circular.png';
 
 const Footer = () => {
   return (
@@ -13,12 +14,14 @@ const Footer = () => {
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16 mb-16 md:mb-24">
           <div className="space-y-6 md:space-y-8">
-            <Link to="/" className="flex items-center gap-4 group">
-              <img
-                src="/images/logo.jpeg"
-                alt="The Wave"
-                className="h-20 md:h-28 w-auto object-contain transition-transform duration-500 group-hover:scale-105 mix-blend-multiply"
-              />
+            <Link to="/" className="flex items-center gap-4 group justify-start">
+              <div className="relative h-16 w-16 md:h-20 md:w-20 rounded-full overflow-hidden border-2 border-ocean/20 shadow-[0_4px_20px_rgba(26,143,181,0.12)] transition-all duration-500 group-hover:scale-105 group-hover:border-ocean/45 group-hover:shadow-[0_8px_30px_rgba(26,143,181,0.22)] flex items-center justify-center bg-white">
+                <img
+                  src={mainLogo}
+                  alt="The Wave"
+                  className="h-full w-full object-contain p-0.5 rounded-full"
+                />
+              </div>
             </Link>
             <p className="text-slate-500 leading-relaxed text-sm font-medium max-w-xs">
               Harnessing the transformative power of deep-sea minerals to rejuvenate your body and soul.

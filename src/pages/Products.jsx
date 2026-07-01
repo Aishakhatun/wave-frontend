@@ -7,18 +7,18 @@ import p1Img from '../assets/product1.jpeg';
 import p1Desc from '../assets/product1_description.jpeg';
 import p2Img from '../assets/product2.jpeg';
 import p2Desc from '../assets/product2_description.jpeg';
-import p3Img from '../assets/product3.png';
+import p3Img from '../assets/product3.jpg';
 import p3Desc from '../assets/product3_description.jpeg';
-import p4Img from '../assets/product4.png';
+import p4Img from '../assets/product4.jpg';
 import p4Desc from '../assets/product4_description.jpeg';
-import p5Img from '../assets/product5.png';
+import p5Img from '../assets/product5.jpg';
 import p5Desc from '../assets/product5_description.jpeg';
 
 // ── Static product data ───────────────────────────────────────────────────────
 const PRODUCTS = [
   {
     id: 1,
-    name: 'Intense Glowing Spa Salt',
+    name: 'The wave-Intense Glowing Spa Salt',
     tagline: 'Reveal smoother, softer, more radiant-looking skin',
     category: 'Body Care',
     badge: 'Best Seller',
@@ -39,7 +39,7 @@ const PRODUCTS = [
   },
   {
     id: 2,
-    name: 'Dry Shampoo',
+    name: 'The wave-Dry Shampoo',
     tagline: 'Refresh your hair anytime, anywhere',
     category: 'Hair Care',
     badge: 'New',
@@ -60,7 +60,7 @@ const PRODUCTS = [
   },
   {
     id: 3,
-    name: 'Calcium + Vitamin D Gummies',
+    name: 'The wave-Calcium + Vitamin D Gummies',
     tagline: 'Support your daily calcium and vitamin D intake',
     category: 'Gummies',
     badge: 'Zero Sugar',
@@ -79,7 +79,7 @@ const PRODUCTS = [
   },
   {
     id: 4,
-    name: 'Multivitamin Gummies',
+    name: 'The wave-Multivitamin Gummies',
     tagline: 'Daily nutritional support to help complement a balanced lifestyle',
     category: 'Gummies',
     badge: 'Daily Care',
@@ -98,7 +98,7 @@ const PRODUCTS = [
   },
   {
     id: 5,
-    name: 'Hair, Skin & Nails Gummies',
+    name: 'The wave-Hair, Skin & Nails Gummies',
     tagline: 'Nourish your beauty routine from within',
     category: 'Gummies',
     badge: 'HSN',
@@ -142,7 +142,7 @@ const Products = () => {
     : [];
 
   return (
-    <div className="pt-24 pb-20 bg-pearl min-h-screen">
+    <div className="pt-32 pb-20 bg-pearl min-h-screen">
 
       {/* ─── Header ─── */}
       <section className="relative py-10 px-6 md:px-12 overflow-hidden bg-[radial-gradient(circle_at_top_left,_#d6f3fb_0%,_#FDFCFB_100%)]">

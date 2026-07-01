@@ -51,7 +51,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="pt-24 pb-20 bg-pearl">
+    <div className="pt-32 pb-20 bg-pearl">
       {/* ─── Header ─── */}
       <section className="relative py-10 px-6 md:px-12 overflow-hidden bg-[radial-gradient(circle_at_top_right,_#d6f3fb_0%,_#FDFCFB_100%)]">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-ocean/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />

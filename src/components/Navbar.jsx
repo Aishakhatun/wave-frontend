@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FiShoppingBag, FiMenu, FiX, FiDroplet, FiInstagram } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
+import mainLogo from '../assets/mainlogo_circular.png';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -30,11 +31,13 @@ const Navbar = () => {
       }`}>
       <div className="container-custom flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3 group">
-          <img
-            src="/images/logo.jpeg"
-            alt="The Wave"
-            className="h-12 md:h-16 w-auto object-contain transition-transform duration-500 group-hover:scale-105 mix-blend-multiply"
-          />
+          <div className="relative h-18 w-18 md:h-24 md:w-24 rounded-full overflow-hidden border-2 border-ocean/20 shadow-[0_4px_25px_rgba(26,143,181,0.12)] transition-all duration-500 group-hover:scale-105 group-hover:border-ocean/45 group-hover:shadow-[0_8px_35px_rgba(26,143,181,0.25)] flex items-center justify-center bg-white">
+            <img
+              src={mainLogo}
+              alt="The Wave"
+              className="h-full w-full object-contain p-0.5 rounded-full"
+            />
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
