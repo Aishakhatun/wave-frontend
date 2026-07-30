@@ -81,15 +81,20 @@ const About = () => {
             ].map((value, i) => (
               <motion.div 
                 key={i} 
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-12 bg-white rounded-[50px] group hover:-translate-y-3 transition-all duration-500 border border-white shadow-lg hover:shadow-2xl shadow-ocean/[0.02]"
+                whileHover={{ y: -12, scale: 1.02 }}
+                transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+                className="p-12 bg-white rounded-[50px] group border border-white shadow-lg hover:shadow-2xl shadow-ocean/[0.02] cursor-pointer flex flex-col items-center md:items-start text-center md:text-left"
               >
-                <div className="w-16 h-16 bg-sky-pale rounded-2xl flex items-center justify-center text-3xl text-ocean mb-8 group-hover:bg-coral group-hover:text-white transition-all">
+                <motion.div 
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="w-16 h-16 bg-sky-pale rounded-2xl flex items-center justify-center text-3xl text-ocean mb-8 group-hover:bg-coral group-hover:text-white transition-all shadow-inner"
+                >
                   <value.Icon />
-                </div>
+                </motion.div>
                 <h4 className="text-xl font-black mb-4 text-slate-900 uppercase tracking-[2px]">{value.title}</h4>
                 <p className="text-slate-500 text-base leading-relaxed font-medium">{value.desc}</p>
               </motion.div>

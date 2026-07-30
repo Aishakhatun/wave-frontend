@@ -286,14 +286,25 @@ const Home = () => {
                 From exfoliating spa salts and refreshing dry shampoos to nourishing gummies, our products support your daily beauty and wellness routine.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <motion.div 
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+              >
                 {[
                   { icon: <FiDroplet />, title: "Spa Salts", desc: "Helps reveal smoother, softer, more radiant-looking skin.", color: "bg-sky-pale" },
                   { icon: <FiWind />, title: "Dry Shampoo", desc: "Refresh hair anytime — absorbs oil, adds freshness.", color: "bg-sand" },
                   { icon: <FiLayers />, title: "Gummies", desc: "Hair, Skin & Nails and KidsVita daily support.", color: "bg-sage-light" },
                   { icon: <FiSun />, title: "Wellness", desc: "Calcium + Vitamin D2 for bone health & daily wellness.", color: "bg-coral-light/20" }
                 ].map((item, i) => (
-                  <div key={i} className={`p-5 md:p-6 rounded-[24px] border border-white flex flex-col gap-3.5 shadow-sm hover:shadow-lg transition-all ${item.color}`}>
+                  <motion.div 
+                    key={i} 
+                    variants={itemVariants}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    className={`p-5 md:p-6 rounded-[24px] border border-white flex flex-col gap-3.5 shadow-sm hover:shadow-lg transition-all cursor-pointer ${item.color}`}
+                  >
                     <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-ocean text-lg shadow-sm">
                       {item.icon}
                     </div>
@@ -301,25 +312,30 @@ const Home = () => {
                       <h4 className="text-sm md:text-base font-black text-slate-900 mb-1 uppercase tracking-tight">{item.title}</h4>
                       <p className="text-xs text-slate-500 font-medium leading-relaxed">{item.desc}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
 
             <div className="relative w-full">
               {/* Tab Selector */}
-              <div className="flex justify-center gap-1.5 mb-6 bg-white p-1.5 rounded-full border border-ocean/5 max-w-sm mx-auto shadow-sm">
+              <div className="flex justify-center gap-1.5 mb-6 bg-white p-1.5 rounded-full border border-ocean/5 max-w-sm mx-auto shadow-sm relative z-10">
                 {SHOWCASE_PRODUCTS.map((prod, idx) => (
                   <button
                     key={prod.id}
                     onClick={() => setActiveShowcase(idx)}
-                    className={`flex-1 py-2 px-3 rounded-full text-[10px] md:text-[11px] font-black uppercase tracking-wider transition-all duration-300 ${
-                      activeShowcase === idx
-                        ? 'bg-ocean text-white shadow-md shadow-ocean/15 scale-105'
-                        : 'text-slate-500 hover:text-ocean'
-                    }`}
+                    className="flex-1 py-2 px-3 rounded-full text-[10px] md:text-[11px] font-black uppercase tracking-wider relative transition-all duration-300"
                   >
-                    {prod.badge}
+                    {activeShowcase === idx && (
+                      <motion.span
+                        layoutId="activeShowcaseTab"
+                        className="absolute inset-0 bg-ocean rounded-full shadow-md shadow-ocean/15"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                    <span className={`relative z-10 ${activeShowcase === idx ? 'text-white' : 'text-slate-500 hover:text-ocean'}`}>
+                      {prod.badge}
+                    </span>
                   </button>
                 ))}
               </div>

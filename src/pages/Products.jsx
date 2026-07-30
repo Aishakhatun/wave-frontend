@@ -262,9 +262,10 @@ const Products = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ delay: i * 0.05, duration: 0.4 }}
+                  whileHover={{ y: -8, scale: 1.015 }}
+                  transition={{ delay: i * 0.05, duration: 0.4, type: 'spring', stiffness: 180, damping: 20 }}
                   key={product.id}
-                  className="flex flex-col group bg-white rounded-2xl border border-slate-100 p-4 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
+                  className="flex flex-col group bg-white rounded-2xl border border-slate-100 p-4 shadow-sm hover:shadow-lg transition-all relative overflow-hidden cursor-pointer"
                 >
                   {/* Top Image Box */}
                   <div
