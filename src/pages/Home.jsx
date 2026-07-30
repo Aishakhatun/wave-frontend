@@ -15,8 +15,8 @@ const slides = [
    { img: combo, name: 'The wave-Combo Pack' },
   { img: product1, name: 'The wave-Dry Shampoo' },
   { img: product2, name: 'The wave-Intense Glowing Spa Salt' },
-  { img: product3, name: 'The wave-Calcium + Vitamin D Gummies' },
-  { img: product4, name: 'The wave-Multivitamin Gummies' },
+  { img: product3, name: 'The wave-Calcium + Vitamin D2 Gummies' },
+  { img: product4, name: 'The wave-KidsVita Gummies' },
   { img: product5, name: 'The wave-Hair, Skin & Nails Gummies' }
  
 ];
@@ -65,14 +65,14 @@ const SHOWCASE_PRODUCTS = [
     pillText: 'text-emerald-700',
     items: [
       {
-        name: 'The wave-Calcium + Vitamin D Gummies',
+        name: 'The wave-Calcium + Vitamin D2 Gummies',
         tagline: 'Bone & Muscle Strength',
         desc: 'A delicious daily gummy formulated to support your bone health, calcium levels, and natural muscle function.',
         img: product3,
         benefits: ['Supports bone & muscle health', 'Easy-to-take gummy format', 'Zero sugar formulation']
       },
       {
-        name: 'The wave-Multivitamin Gummies',
+        name: 'The wave-KidsVita Gummies',
         tagline: 'Daily Nutritional Support',
         desc: 'Packed with essential vitamins and natural bio-actives like ashwagandha to support daily energy, immune defense, and general health.',
         img: product4,
@@ -290,8 +290,8 @@ const Home = () => {
                 {[
                   { icon: <FiDroplet />, title: "Spa Salts", desc: "Helps reveal smoother, softer, more radiant-looking skin.", color: "bg-sky-pale" },
                   { icon: <FiWind />, title: "Dry Shampoo", desc: "Refresh hair anytime — absorbs oil, adds freshness.", color: "bg-sand" },
-                  { icon: <FiLayers />, title: "Gummies", desc: "Hair, Skin & Nails and Multivitamin daily support.", color: "bg-sage-light" },
-                  { icon: <FiSun />, title: "Wellness", desc: "Calcium + Vitamin D for bone health & daily wellness.", color: "bg-coral-light/20" }
+                  { icon: <FiLayers />, title: "Gummies", desc: "Hair, Skin & Nails and KidsVita daily support.", color: "bg-sage-light" },
+                  { icon: <FiSun />, title: "Wellness", desc: "Calcium + Vitamin D2 for bone health & daily wellness.", color: "bg-coral-light/20" }
                 ].map((item, i) => (
                   <div key={i} className={`p-5 md:p-6 rounded-[24px] border border-white flex flex-col gap-3.5 shadow-sm hover:shadow-lg transition-all ${item.color}`}>
                     <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-ocean text-lg shadow-sm">
