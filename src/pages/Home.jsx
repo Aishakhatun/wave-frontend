@@ -332,49 +332,54 @@ const Home = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.3 }}
-                  className={`p-6 md:p-8 rounded-[36px] border border-white flex flex-col md:flex-row gap-6 shadow-[0_20px_60px_rgba(26,143,181,0.05)] items-center min-h-[330px] ${SHOWCASE_PRODUCTS[activeShowcase].bg}`}
+                  className={`p-6 md:p-8 rounded-[36px] border border-white flex flex-col gap-4 shadow-[0_20px_60px_rgba(26,143,181,0.05)] min-h-[330px] ${SHOWCASE_PRODUCTS[activeShowcase].bg}`}
                 >
-                  {/* Text details */}
-                  <div className="flex-1 flex flex-col items-start text-left">
-                    <div className="flex items-center justify-between w-full mb-3">
-                      <span className={`px-2.5 py-0.5 rounded-full text-[8px] font-black uppercase tracking-[2px] ${SHOWCASE_PRODUCTS[activeShowcase].pillBg} ${SHOWCASE_PRODUCTS[activeShowcase].pillText}`}>
-                        {SHOWCASE_PRODUCTS[activeShowcase].badge}
-                      </span>
-                      <button
-                        onClick={handleBuyNow}
-                        className="btn-primary !py-1.5 !px-4 text-[9px] font-black tracking-wider uppercase rounded-full shadow-md hover:scale-105 active:scale-95 transition-all"
-                      >
-                        Buy Now
-                      </button>
-                    </div>
-                    <h3 className="text-lg md:text-xl font-black text-slate-900 leading-tight mb-1 font-jakarta tracking-tight">
-                      {SHOWCASE_PRODUCTS[activeShowcase].items[activeItemIndex].name}
-                    </h3>
-                    <p className="text-slate-400 text-[11px] font-bold italic mb-3">
-                      {SHOWCASE_PRODUCTS[activeShowcase].items[activeItemIndex].tagline}
-                    </p>
-                    <p className="text-slate-500 text-xs leading-relaxed mb-5 font-medium">
-                      {SHOWCASE_PRODUCTS[activeShowcase].items[activeItemIndex].desc}
-                    </p>
-                    <div className="space-y-2 w-full">
-                      {SHOWCASE_PRODUCTS[activeShowcase].items[activeItemIndex].benefits.map((ben, i) => (
-                        <div key={i} className="flex items-center gap-2">
-                          <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: `${SHOWCASE_PRODUCTS[activeShowcase].accent}20` }}>
-                            <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: SHOWCASE_PRODUCTS[activeShowcase].accent }} />
-                          </div>
-                          <span className="text-slate-600 text-xs font-bold leading-tight">{ben}</span>
-                        </div>
-                      ))}
-                    </div>
+                  {/* Top Bar: Badge on Left, Buy Now Button on Far Right */}
+                  <div className="flex items-center justify-between w-full">
+                    <span className={`px-2.5 py-0.5 rounded-full text-[8px] font-black uppercase tracking-[2px] ${SHOWCASE_PRODUCTS[activeShowcase].pillBg} ${SHOWCASE_PRODUCTS[activeShowcase].pillText}`}>
+                      {SHOWCASE_PRODUCTS[activeShowcase].badge}
+                    </span>
+                    <button
+                      onClick={handleBuyNow}
+                      className="btn-primary !py-1.5 !px-4 text-[9px] font-black tracking-wider uppercase rounded-full shadow-md hover:scale-105 active:scale-95 transition-all"
+                    >
+                      Buy Now
+                    </button>
                   </div>
 
-                  {/* Image side */}
-                  <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 shrink-0 relative flex items-center justify-center bg-white rounded-[28px] border border-white/80 shadow-sm p-3 group/showcase-img overflow-hidden">
-                    <img
-                      src={SHOWCASE_PRODUCTS[activeShowcase].items[activeItemIndex].img}
-                      alt={SHOWCASE_PRODUCTS[activeShowcase].items[activeItemIndex].name}
-                      className="w-full h-full object-contain transition-transform duration-700 group-hover/showcase-img:scale-105"
-                    />
+                  {/* Card Content Row */}
+                  <div className="flex flex-col md:flex-row gap-6 items-center w-full">
+                    {/* Text details */}
+                    <div className="flex-1 flex flex-col items-start text-left">
+                      <h3 className="text-lg md:text-xl font-black text-slate-900 leading-tight mb-1 font-jakarta tracking-tight">
+                        {SHOWCASE_PRODUCTS[activeShowcase].items[activeItemIndex].name}
+                      </h3>
+                      <p className="text-slate-400 text-[11px] font-bold italic mb-3">
+                        {SHOWCASE_PRODUCTS[activeShowcase].items[activeItemIndex].tagline}
+                      </p>
+                      <p className="text-slate-500 text-xs leading-relaxed mb-5 font-medium">
+                        {SHOWCASE_PRODUCTS[activeShowcase].items[activeItemIndex].desc}
+                      </p>
+                      <div className="space-y-2 w-full">
+                        {SHOWCASE_PRODUCTS[activeShowcase].items[activeItemIndex].benefits.map((ben, i) => (
+                          <div key={i} className="flex items-center gap-2">
+                            <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: `${SHOWCASE_PRODUCTS[activeShowcase].accent}20` }}>
+                              <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: SHOWCASE_PRODUCTS[activeShowcase].accent }} />
+                            </div>
+                            <span className="text-slate-600 text-xs font-bold leading-tight">{ben}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Image side */}
+                    <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 shrink-0 relative flex items-center justify-center bg-white rounded-[28px] border border-white/80 shadow-sm p-3 group/showcase-img overflow-hidden">
+                      <img
+                        src={SHOWCASE_PRODUCTS[activeShowcase].items[activeItemIndex].img}
+                        alt={SHOWCASE_PRODUCTS[activeShowcase].items[activeItemIndex].name}
+                        className="w-full h-full object-contain transition-transform duration-700 group-hover/showcase-img:scale-105"
+                      />
+                    </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
