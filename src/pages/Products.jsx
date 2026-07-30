@@ -104,7 +104,7 @@ const PRODUCTS = [
   },
   {
     id: 4,
-    name: 'The wave-Multivitamin Gummies',
+    name: 'The wave-KidsVita Gummies',
     tagline: 'Daily nutritional support to help complement a balanced lifestyle',
     category: 'Gummies',
     badge: 'Daily Care',

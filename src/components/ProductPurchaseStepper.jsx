@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import qrCodeImg from '../assets/QRcode.png';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FiX, 
@@ -51,7 +52,7 @@ const NEARBY_SHOPS = [
     timing: '9:00 AM - 9:30 PM',
     phone: '+91 76003 04304',
     rawPhone: '7600304304',
-    upiId: 'wave.mgroad@okaxis',
+    upiId: '9586928554-2@ybl',
     owner: 'Rajesh Kumar (Manager)',
     mapUrl: 'https://maps.google.com/?q=MG+Road+Bengaluru',
   }
@@ -390,110 +391,86 @@ export default function ProductPurchaseStepper({ product, isOpen, onClose }) {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="max-w-md mx-auto space-y-4 py-2"
+                className="max-w-md mx-auto space-y-3"
               >
                 <button
                   onClick={() => setViewState(product.isStoreOnly ? 'details' : 'channels')}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-ocean hover:text-ocean-deep transition-colors mb-1"
+                  className="inline-flex items-center gap-1 text-[11px] font-bold text-ocean hover:text-ocean-deep transition-colors"
                 >
-                  <FiArrowLeft className="text-sm" /> {product.isStoreOnly ? 'Back to Details' : 'Back to Online Retailers'}
+                  <FiArrowLeft className="text-xs" /> {product.isStoreOnly ? 'Back to Details' : 'Back to Retailers'}
                 </button>
 
-                <div className="text-center mb-2">
-                  <h3 className="text-lg font-black text-slate-900 font-jakarta">Nearby Store Payment QR</h3>
-                  <p className="text-xs text-slate-500 font-medium mt-0.5">
-                    Scan QR code below for direct store payment or contact manager:
-                  </p>
+                <div className="text-center">
+                  <h3 className="text-base font-black text-slate-900 font-jakarta leading-tight">Store Payment QR</h3>
                 </div>
 
-                {/* QR Code & Payment Information Box */}
-                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col sm:flex-row items-center gap-4">
-                  {/* Clean SVG QR Code */}
-                  <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm shrink-0 flex flex-col items-center">
-                    <svg className="w-32 h-32" viewBox="0 0 200 200" fill="none">
-                      <rect width="200" height="200" rx="12" fill="#0f172a" />
-                      <rect x="20" y="20" width="50" height="50" rx="8" fill="#10b981" />
-                      <rect x="30" y="30" width="30" height="30" rx="4" fill="#0f172a" />
-                      <rect x="38" y="38" width="14" height="14" rx="2" fill="#10b981" />
-                      
-                      <rect x="130" y="20" width="50" height="50" rx="8" fill="#10b981" />
-                      <rect x="140" y="30" width="30" height="30" rx="4" fill="#0f172a" />
-                      <rect x="148" y="38" width="14" height="14" rx="2" fill="#10b981" />
-
-                      <rect x="20" y="130" width="50" height="50" rx="8" fill="#10b981" />
-                      <rect x="30" y="140" width="30" height="30" rx="4" fill="#0f172a" />
-                      <rect x="38" y="148" width="14" height="14" rx="2" fill="#10b981" />
-
-                      <rect x="85" y="20" width="14" height="14" fill="#ffffff" />
-                      <rect x="85" y="45" width="14" height="25" fill="#10b981" />
-                      <rect x="105" y="85" width="25" height="14" fill="#ffffff" />
-                      <rect x="85" y="130" width="25" height="25" fill="#10b981" />
-                      <rect x="130" y="105" width="25" height="25" fill="#ffffff" />
-                      <rect x="155" y="145" width="25" height="25" fill="#10b981" />
-
-                      <circle cx="100" cy="100" r="18" fill="#10b981" />
-                      <text x="100" y="104" fontSize="9" fontWeight="900" fill="#ffffff" textAnchor="middle" fontFamily="sans-serif">WAVE</text>
-                    </svg>
-                    <span className="text-[9px] font-black tracking-widest uppercase text-slate-400 mt-2">Scan & Pay</span>
+                {/* QR + Payment Info: Side by Side on Desktop, Stacked on Mobile */}
+                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 flex flex-col sm:flex-row items-center gap-3.5 sm:gap-4">
+                  {/* QR Image */}
+                  <div className="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm shrink-0 flex flex-col items-center">
+                    <img
+                      src={qrCodeImg}
+                      alt="PhonePe Payment QR Code - Mediglow Global Solutions"
+                      className="w-36 h-36 object-contain"
+                    />
+                    <span className="text-[8px] font-black tracking-widest uppercase text-slate-400 mt-1">Scan & Pay</span>
                   </div>
 
-                  {/* Payment Info Details */}
-                  <div className="flex-1 space-y-3 w-full text-left">
+                  {/* Payment Info */}
+                  <div className="w-full sm:flex-1 space-y-2.5 min-w-0">
                     <div>
-                      <span className="text-[9px] font-black uppercase text-slate-400 block">Shop UPI VPA</span>
-                      <div className="flex items-center justify-between bg-white p-2 rounded-xl border border-slate-200 mt-0.5">
-                        <span className="font-mono text-xs font-extrabold text-slate-900">{selectedShop.upiId}</span>
+                      <span className="text-[8px] font-black uppercase text-slate-400 block">Shop UPI VPA</span>
+                      <div className="flex items-center justify-between bg-white p-1.5 rounded-lg border border-slate-200 mt-0.5 gap-2">
+                        <span className="font-mono text-[10px] font-extrabold text-slate-900 truncate">{selectedShop.upiId}</span>
                         <button
                           onClick={() => handleCopy(selectedShop.upiId, 'upi')}
-                          className="px-2 py-1 bg-ocean/10 text-ocean hover:bg-ocean hover:text-white text-[10px] font-bold rounded-lg transition-colors shrink-0 ml-1"
+                          className="px-2 py-0.5 bg-ocean/10 text-ocean hover:bg-ocean hover:text-white text-[8px] font-bold rounded-md transition-colors shrink-0"
                         >
-                          {copiedUpi ? 'Copied!' : 'Copy UPI'}
+                          {copiedUpi ? '✓' : 'Copy'}
                         </button>
                       </div>
                     </div>
 
                     <div>
-                      <span className="text-[9px] font-black uppercase text-slate-400 block">Manager Contact</span>
-                      <div className="flex items-center justify-between bg-white p-2 rounded-xl border border-slate-200 mt-0.5">
-                        <span className="font-mono text-xs font-extrabold text-slate-900">{selectedShop.phone}</span>
+                      <span className="text-[8px] font-black uppercase text-slate-400 block">Manager Contact</span>
+                      <div className="flex items-center justify-between bg-white p-1.5 rounded-lg border border-slate-200 mt-0.5 gap-2">
+                        <span className="font-mono text-[10px] font-extrabold text-slate-900 truncate">{selectedShop.phone}</span>
                         <button
                           onClick={() => handleCopy(selectedShop.phone, 'phone')}
-                          className="px-2 py-1 bg-slate-100 text-slate-700 hover:bg-slate-200 text-[10px] font-bold rounded-lg transition-colors shrink-0 ml-1"
+                          className="px-2 py-0.5 bg-slate-100 text-slate-700 hover:bg-slate-200 text-[8px] font-bold rounded-md transition-colors shrink-0"
                         >
-                          {copiedPhone ? 'Copied!' : 'Copy'}
+                          {copiedPhone ? '✓' : 'Copy'}
                         </button>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Direct Action Buttons */}
-                <div className="grid grid-cols-3 gap-2 pt-1">
+                {/* Action Buttons */}
+                <div className="grid grid-cols-3 gap-2">
                   <a
                     href={`tel:${selectedShop.rawPhone}`}
-                    className="py-2.5 px-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-[11px] font-extrabold uppercase flex items-center justify-center gap-1.5 transition-all text-center shadow-sm"
+                    className="py-2 px-1 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-[10px] font-extrabold uppercase flex items-center justify-center gap-1 transition-all shadow-sm"
                   >
-                    <FiPhone className="text-emerald-400" /> Call
+                    <FiPhone className="text-emerald-400 text-xs" /> Call
                   </a>
-
                   <a
                     href={`https://wa.me/91${selectedShop.rawPhone}?text=${encodeURIComponent(
                       `Hi! I'm interested in buying "${product.name}" from ${selectedShop.name}.`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-2.5 px-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-[11px] font-extrabold uppercase flex items-center justify-center gap-1.5 transition-all text-center shadow-sm"
+                    className="py-2 px-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-[10px] font-extrabold uppercase flex items-center justify-center gap-1 transition-all shadow-sm"
                   >
-                    <FiMessageSquare className="text-white" /> WhatsApp
+                    <FiMessageSquare className="text-xs" /> WhatsApp
                   </a>
-
                   <a
                     href={selectedShop.mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-2.5 px-2 bg-ocean hover:bg-ocean-deep text-white rounded-xl text-[11px] font-extrabold uppercase flex items-center justify-center gap-1.5 transition-all text-center shadow-sm"
+                    className="py-2 px-1 bg-ocean hover:bg-ocean-deep text-white rounded-xl text-[10px] font-extrabold uppercase flex items-center justify-center gap-1 transition-all shadow-sm"
                   >
-                    <FiNavigation className="text-white" /> Map
+                    <FiNavigation className="text-xs" /> Map
                   </a>
                 </div>
               </motion.div>
