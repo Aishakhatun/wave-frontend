@@ -449,14 +449,14 @@ export default function ProductPurchaseStepper({ product, isOpen, onClose }) {
                 {/* Action Buttons */}
                 <div className="grid grid-cols-3 gap-2">
                   <a
-                    href={`tel:${selectedShop.rawPhone}`}
+                    href="tel:+917600304304"
                     className="py-2 px-1 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-[10px] font-extrabold uppercase flex items-center justify-center gap-1 transition-all shadow-sm"
                   >
                     <FiPhone className="text-emerald-400 text-xs" /> Call
                   </a>
                   <a
-                    href={`https://wa.me/91${selectedShop.rawPhone}?text=${encodeURIComponent(
-                      `Hi! I'm interested in buying "${product.name}" from ${selectedShop.name}.`
+                    href={`https://wa.me/917600304304?text=${encodeURIComponent(
+                      `Hi! I'm interested in buying "${product.name}" from your store.`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
