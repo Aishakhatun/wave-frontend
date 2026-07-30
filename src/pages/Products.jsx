@@ -254,7 +254,7 @@ const Products = () => {
       {/* ─── Products Grid — All Products ─── */}
       <section className="px-4 sm:px-6 md:px-10">
         <div className="container-custom">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 items-stretch">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 items-stretch">
             <AnimatePresence mode="popLayout">
               {filteredProducts.map((product, i) => (
                 <motion.div
@@ -264,12 +264,12 @@ const Products = () => {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ delay: i * 0.05, duration: 0.4 }}
                   key={product.id}
-                  className="flex flex-col group bg-white rounded-2xl border border-slate-100 p-3 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
+                  className="flex flex-col group bg-white rounded-2xl border border-slate-100 p-4 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
                 >
                   {/* Top Image Box */}
                   <div
                     onClick={(e) => openPurchaseModal(product, e)}
-                    className="relative h-44 sm:h-48 rounded-xl overflow-hidden flex items-center justify-center p-2.5 bg-slate-50 border border-slate-100 cursor-pointer"
+                    className="relative h-56 sm:h-64 rounded-xl overflow-hidden flex items-center justify-center p-4 bg-slate-50 border border-slate-100 cursor-pointer"
                   >
                     <img
                       src={product.image}
