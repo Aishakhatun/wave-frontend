@@ -76,8 +76,8 @@ const PRODUCTS = [
   },
   {
     id: 3,
-    name: 'The wave-Calcium + Vitamin D Gummies',
-    tagline: 'Support your daily calcium and vitamin D intake',
+    name: 'The wave-Calcium + Vitamin D2 Gummies',
+    tagline: 'Support your daily calcium and vitamin D2 intake',
     category: 'Gummies',
     badge: 'Zero Sugar',
     weight: '30 Gummies',
@@ -89,7 +89,7 @@ const PRODUCTS = [
     image: p3Img,
     descriptionImage: p3Desc,
     description:
-      'A tasty way to support your daily calcium and vitamin D intake.',
+      'A tasty way to support your daily calcium and vitamin D2 intake.',
     ingredients: ['Calcium (Tricalcium Phosphate)', 'Vitamin D2', 'Wheat Dextrin', 'Inulin'],
     benefits: [
       'Supports bone health',
