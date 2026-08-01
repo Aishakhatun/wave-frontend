@@ -108,14 +108,14 @@ const Footer = () => {
               {/* Instagram */}
               <li className="flex gap-4 text-slate-500 items-start">
                 <a 
-                  href="https://www.instagram.com/mediglow.gs?igsh=MXE5OWUxbWhjMTA3cw==" 
+                  href="https://www.instagram.com/thewave.glowwithflow/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="flex gap-4 group"
                 >
                   <FiInstagram className="text-ocean text-xl shrink-0 mt-0.5 group-hover:text-coral transition-colors" />
                   <span className="text-sm font-medium leading-relaxed group-hover:text-ocean transition-colors">
-                    @mediglow.gs
+                    @thewave.glowwithflow
                   </span>
                 </a>
               </li>
