@@ -30,7 +30,7 @@ const Footer = () => {
               Harnessing the transformative power of deep-sea minerals to rejuvenate your body and soul.
             </p>
             <div className="flex items-center gap-4">
-              {/* Instagram */}
+              {/* Instagram
               <a
                 href="https://www.instagram.com/thewave.glowwithflow/"
                 target="_blank"
@@ -38,7 +38,7 @@ const Footer = () => {
                 className="w-11 h-11 bg-ocean/10 text-ocean rounded-2xl flex items-center justify-center hover:bg-ocean hover:text-white transition-all duration-500 shadow-sm hover:shadow-ocean/20 shrink-0"
               >
                 <FiInstagram className="text-xl" />
-              </a>
+              </a> */}
 
               {/* Quick Support QR */}
               <div className="flex items-center gap-3 p-2 bg-white rounded-2xl border border-ocean/5 shadow-sm">
