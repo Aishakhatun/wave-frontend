@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin, FiSend } from 'react-icons/fi';
 import axios from 'axios';
+import PhoneChoiceModal from '../components/PhoneChoiceModal';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const Contact = () => {
   });
   const [status, setStatus] = useState({ type: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isPhoneModalOpen, setIsPhoneModalOpen] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -133,41 +135,64 @@ const Contact = () => {
 
               {/* Staggered Info Items */}
               <div className="space-y-6">
-                {[
-                  { 
-                    Icon: FiMapPin, 
-                    title: 'Flagship Spa', 
-                    text: 'D4 Ahmed Chambers, Junabazar, Himatnagar',
-                    color: 'bg-sky-500/10 text-sky-600'
-                  },
-                  { 
-                    Icon: FiPhone, 
-                    title: 'Concierge', 
-                    text: '+91 7600304304',
-                    color: 'bg-ocean/10 text-ocean'
-                  },
-                  { 
-                    Icon: FiMail, 
-                    title: 'Inquiries', 
-                    text: 'mediglowsolutions@gmail.com',
-                    color: 'bg-coral/10 text-coral'
-                  }
-                ].map((item, i) => (
-                  <motion.div 
-                    key={i} 
-                    variants={infoItemVariants}
-                    whileHover={{ x: 5 }}
-                    className="flex gap-4 items-center group cursor-pointer"
-                  >
-                    <div className={`w-11 h-11 rounded-2xl ${item.color} flex items-center justify-center text-lg shadow-sm group-hover:scale-115 transition-all duration-300 shrink-0`}>
-                      <item.Icon />
+                {/* Flagship Spa Location */}
+                <motion.a
+                  href="https://www.google.com/maps/search/?api=1&query=D4+Ahmed+Chambers+Junabazar+Himatnagar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variants={infoItemVariants}
+                  whileHover={{ x: 5 }}
+                  className="flex gap-4 items-center group cursor-pointer"
+                >
+                  <div className="w-11 h-11 rounded-2xl bg-sky-500/10 text-sky-600 flex items-center justify-center text-lg shadow-sm group-hover:scale-115 transition-all duration-300 shrink-0">
+                    <FiMapPin />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-black text-slate-400 text-[8px] uppercase tracking-[3px] mb-0.5">Flagship Spa</h4>
+                      <span className="text-[9px] font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">View Map</span>
                     </div>
-                    <div className="min-w-0">
-                      <h4 className="font-black text-slate-400 text-[8px] uppercase tracking-[3px] mb-0.5">{item.title}</h4>
-                      <p className="text-slate-800 font-extrabold text-xs sm:text-sm leading-tight truncate group-hover:text-ocean transition-colors">{item.text}</p>
+                    <p className="text-slate-800 font-extrabold text-xs sm:text-sm leading-tight group-hover:text-ocean transition-colors">D4 Ahmed Chambers, Junabazar, Himatnagar</p>
+                  </div>
+                </motion.a>
+
+                {/* Concierge Phone - Triggers Phone or WhatsApp Modal */}
+                <motion.div
+                  onClick={() => setIsPhoneModalOpen(true)}
+                  variants={infoItemVariants}
+                  whileHover={{ x: 5 }}
+                  className="flex gap-4 items-center group cursor-pointer"
+                >
+                  <div className="w-11 h-11 rounded-2xl bg-ocean/10 text-ocean flex items-center justify-center text-lg shadow-sm group-hover:scale-115 transition-all duration-300 shrink-0">
+                    <FiPhone />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-black text-slate-400 text-[8px] uppercase tracking-[3px] mb-0.5">Concierge</h4>
+                      <span className="text-[9px] font-bold text-ocean bg-ocean/10 px-2 py-0.5 rounded-full transition-opacity">Call / WhatsApp</span>
                     </div>
-                  </motion.div>
-                ))}
+                    <p className="text-slate-800 font-extrabold text-xs sm:text-sm leading-tight group-hover:text-ocean transition-colors">+91 7600304304</p>
+                  </div>
+                </motion.div>
+
+                {/* Inquiries Email - Opens Direct Email Client */}
+                <motion.a
+                  href="mailto:mediglowsolutions@gmail.com"
+                  variants={infoItemVariants}
+                  whileHover={{ x: 5 }}
+                  className="flex gap-4 items-center group cursor-pointer"
+                >
+                  <div className="w-11 h-11 rounded-2xl bg-coral/10 text-coral flex items-center justify-center text-lg shadow-sm group-hover:scale-115 transition-all duration-300 shrink-0">
+                    <FiMail />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-black text-slate-400 text-[8px] uppercase tracking-[3px] mb-0.5">Inquiries</h4>
+                      <span className="text-[9px] font-bold text-coral bg-coral/10 px-2 py-0.5 rounded-full transition-opacity">Send Email</span>
+                    </div>
+                    <p className="text-slate-800 font-extrabold text-xs sm:text-sm leading-tight truncate group-hover:text-ocean transition-colors">mediglowsolutions@gmail.com</p>
+                  </div>
+                </motion.a>
               </div>
 
               {/* Decorative brand quote footer */}
@@ -286,6 +311,13 @@ const Contact = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Phone Call / WhatsApp Choice Modal */}
+      <PhoneChoiceModal 
+        isOpen={isPhoneModalOpen} 
+        onClose={() => setIsPhoneModalOpen(false)} 
+        phoneNumber="+91 7600304304" 
+      />
     </div>
   );
 };

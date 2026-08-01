@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiInstagram, FiMail, FiPhone, FiMapPin, FiTwitter, FiDroplet } from 'react-icons/fi';
 import mainLogo from '../assets/mainlogo_circular.png';
+import PhoneChoiceModal from './PhoneChoiceModal';
 
 const Footer = () => {
+  const [isPhoneModalOpen, setIsPhoneModalOpen] = useState(false);
   return (
     <footer className="bg-pearl pt-16 md:pt-24 pb-12 relative overflow-hidden border-t border-ocean/5">
       {/* Decorative Atmosphere */}
@@ -76,26 +79,61 @@ const Footer = () => {
           <div>
             <h3 className="font-black text-[9px] md:text-[10px] uppercase tracking-[3px] md:tracking-[4px] text-ocean mb-6 md:mb-12">Connect</h3>
             <ul className="space-y-5 md:space-y-6">
-              {[
-                { Icon: FiMapPin, text: 'D4 Ahmed Chambers, Junabazar, Himatnagar' },
-                { Icon: FiPhone, text: '+91 7600304304' },
-                { Icon: FiMail, text: 'mediglowsolutions@gmail.com', url: 'mailto:mediglowsolutions@gmail.com' },
-                { Icon: FiInstagram, text: '@mediglow.gs', url: 'https://www.instagram.com/mediglow.gs?igsh=MXE5OWUxbWhjMTA3cw==' }
-              ].map((item, i) => (
-                <li key={i} className="flex gap-4 text-slate-500 items-start">
-                  {item.url ? (
-                    <a href={item.url} target="_blank" rel="noopener noreferrer" className="flex gap-4 group">
-                      <item.Icon className="text-ocean text-xl shrink-0 mt-0.5 group-hover:text-coral transition-colors" />
-                      <span className="text-sm font-medium leading-relaxed group-hover:text-ocean transition-colors">{item.text}</span>
-                    </a>
-                  ) : (
-                    <>
-                      <item.Icon className="text-ocean text-xl shrink-0 mt-0.5" />
-                      <span className="text-sm font-medium leading-relaxed">{item.text}</span>
-                    </>
-                  )}
-                </li>
-              ))}
+              {/* Address */}
+              <li className="flex gap-4 text-slate-500 items-start">
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=D4+Ahmed+Chambers+Junabazar+Himatnagar" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex gap-4 group"
+                >
+                  <FiMapPin className="text-ocean text-xl shrink-0 mt-0.5 group-hover:text-coral transition-colors" />
+                  <span className="text-sm font-medium leading-relaxed group-hover:text-ocean transition-colors">
+                    D4 Ahmed Chambers, Junabazar, Himatnagar
+                  </span>
+                </a>
+              </li>
+
+              {/* Phone Number - Triggers Call or WhatsApp Modal */}
+              <li className="flex gap-4 text-slate-500 items-start">
+                <button 
+                  onClick={() => setIsPhoneModalOpen(true)} 
+                  className="flex gap-4 group text-left cursor-pointer focus:outline-none"
+                >
+                  <FiPhone className="text-ocean text-xl shrink-0 mt-0.5 group-hover:text-coral transition-colors" />
+                  <span className="text-sm font-medium leading-relaxed group-hover:text-ocean transition-colors">
+                    +91 7600304304
+                  </span>
+                </button>
+              </li>
+
+              {/* Email Address - Direct mailto */}
+              <li className="flex gap-4 text-slate-500 items-start">
+                <a 
+                  href="mailto:mediglowsolutions@gmail.com" 
+                  className="flex gap-4 group"
+                >
+                  <FiMail className="text-ocean text-xl shrink-0 mt-0.5 group-hover:text-coral transition-colors" />
+                  <span className="text-sm font-medium leading-relaxed group-hover:text-ocean transition-colors">
+                    mediglowsolutions@gmail.com
+                  </span>
+                </a>
+              </li>
+
+              {/* Instagram */}
+              <li className="flex gap-4 text-slate-500 items-start">
+                <a 
+                  href="https://www.instagram.com/mediglow.gs?igsh=MXE5OWUxbWhjMTA3cw==" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex gap-4 group"
+                >
+                  <FiInstagram className="text-ocean text-xl shrink-0 mt-0.5 group-hover:text-coral transition-colors" />
+                  <span className="text-sm font-medium leading-relaxed group-hover:text-ocean transition-colors">
+                    @mediglow.gs
+                  </span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -121,18 +159,14 @@ const Footer = () => {
               aishasabugar1@gmail.com
             </a>
           </div>
-{/* 
-          <div className="flex gap-6 text-xs uppercase tracking-wider font-bold text-slate-400">
-            <a href="#" className="hover:text-ocean transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-ocean transition-colors">Terms of Service</a>
-          </div> */}
         </div>
-
-        {/* <p className="text-[10px] font-medium text-slate-400 max-w-3xl mx-auto text-center leading-relaxed border-t border-ocean/5 pt-6 mt-6">
-          <span className="font-bold text-ocean/70 uppercase tracking-widest text-[9px]">Disclaimer: </span>
-          Dietary supplements are not intended to diagnose, treat, cure, or prevent any disease. Results may vary between individuals. Consult a healthcare professional before use if pregnant, nursing, taking medication, or under medical supervision.
-        </p> */}
       </div>
+
+      <PhoneChoiceModal 
+        isOpen={isPhoneModalOpen} 
+        onClose={() => setIsPhoneModalOpen(false)} 
+        phoneNumber="+91 7600304304" 
+      />
     </footer>
   );
 };
