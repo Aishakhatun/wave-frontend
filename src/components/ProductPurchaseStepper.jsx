@@ -135,6 +135,8 @@ export default function ProductPurchaseStepper({ product, isOpen, onClose }) {
                       transition={{ duration: 0.3 }}
                       src={imagesList[activeImageIndex] || product.image}
                       alt={product.name}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-contain drop-shadow-md"
                     />
 
@@ -502,7 +504,7 @@ export default function ProductPurchaseStepper({ product, isOpen, onClose }) {
                     <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
                       <FiPhone className="text-emerald-400 text-xs" />
                     </div>
-                    <span>Call Store</span>
+                    <span>Call</span>
                   </a>
 
                   {/* WhatsApp Button */}
