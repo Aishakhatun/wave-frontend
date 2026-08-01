@@ -79,21 +79,6 @@ const Footer = () => {
           <div>
             <h3 className="font-black text-[9px] md:text-[10px] uppercase tracking-[3px] md:tracking-[4px] text-ocean mb-6 md:mb-12">Connect</h3>
             <ul className="space-y-5 md:space-y-6">
-              {/* Address */}
-              <li className="flex gap-4 text-slate-500 items-start">
-                <a 
-                  href="https://www.google.com/maps/search/?api=1&query=D4+Ahmed+Chambers+Junabazar+Himatnagar" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex gap-4 group"
-                >
-                  <FiMapPin className="text-ocean text-xl shrink-0 mt-0.5 group-hover:text-coral transition-colors" />
-                  <span className="text-sm font-medium leading-relaxed group-hover:text-ocean transition-colors">
-                    D4 Ahmed Chambers, Junabazar, Himatnagar
-                  </span>
-                </a>
-              </li>
-
               {/* Phone Number - Triggers Call or WhatsApp Modal */}
               <li className="flex gap-4 text-slate-500 items-start">
                 <button 
