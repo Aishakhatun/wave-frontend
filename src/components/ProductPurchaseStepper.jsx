@@ -7,7 +7,6 @@ import {
   FiPhone, 
   FiMessageSquare, 
   FiCopy, 
-  FiNavigation, 
   FiChevronRight,
   FiArrowLeft,
   FiExternalLink,
@@ -192,10 +191,27 @@ export default function ProductPurchaseStepper({ product, isOpen, onClose }) {
                     )}
                   </div>
 
-                  {/* Weight Chip */}
-                  <span className="inline-block px-2 py-0.5 rounded-lg bg-slate-100 text-slate-600 font-bold text-[9px] uppercase tracking-wider w-fit">
-                    {product.weight}
-                  </span>
+                  {/* Price & Weight Row */}
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {product.price && (
+                      <span className="text-slate-900 font-extrabold text-base">
+                        ₹{product.price}
+                      </span>
+                    )}
+                    {product.originalPrice && (
+                      <span className="text-slate-400 line-through text-xs font-bold">
+                        ₹{product.originalPrice}
+                      </span>
+                    )}
+                    {product.discount && (
+                      <span className="px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                        {product.discount}
+                      </span>
+                    )}
+                    <span className="inline-block px-2 py-0.5 rounded-lg bg-slate-100 text-slate-600 font-bold text-[9px] uppercase tracking-wider">
+                      {product.weight}
+                    </span>
+                  </div>
 
                   {/* ABOUT Box */}
                   <div className="bg-slate-50 border border-slate-100 rounded-xl p-2.5">
@@ -391,86 +407,117 @@ export default function ProductPurchaseStepper({ product, isOpen, onClose }) {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="max-w-md mx-auto space-y-3"
+                className="max-w-md mx-auto space-y-4 py-1"
               >
-                <button
-                  onClick={() => setViewState(product.isStoreOnly ? 'details' : 'channels')}
-                  className="inline-flex items-center gap-1 text-[11px] font-bold text-ocean hover:text-ocean-deep transition-colors"
-                >
-                  <FiArrowLeft className="text-xs" /> {product.isStoreOnly ? 'Back to Details' : 'Back to Retailers'}
-                </button>
-
-                <div className="text-center">
-                  <h3 className="text-base font-black text-slate-900 font-jakarta leading-tight">Store Payment QR</h3>
+                <div className="flex items-center justify-between">
+                  <button
+                    onClick={() => setViewState(product.isStoreOnly ? 'details' : 'channels')}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 text-xs font-bold transition-all"
+                  >
+                    <FiArrowLeft className="text-xs text-ocean" /> {product.isStoreOnly ? 'Back to Details' : 'Back to Retailers'}
+                  </button>
+                  
+                  <span className="text-[9px] font-black uppercase tracking-widest text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    Verified Store
+                  </span>
                 </div>
 
-                {/* QR + Payment Info: Side by Side on Desktop, Stacked on Mobile */}
-                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 flex flex-col sm:flex-row items-center gap-3.5 sm:gap-4">
-                  {/* QR Image */}
-                  <div className="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm shrink-0 flex flex-col items-center">
+                <div className="text-center">
+                  <h3 className="text-lg font-black text-slate-900 font-jakarta leading-tight">Store Payment QR</h3>
+                  <p className="text-xs text-slate-500 font-medium mt-0.5">
+                    Scan to pay directly at store counter or contact manager
+                  </p>
+                </div>
+
+                {/* QR + Payment Info Box */}
+                <div className="bg-gradient-to-b from-slate-50 to-white border border-slate-200/80 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center gap-4">
+                  {/* QR Image Frame */}
+                  <div className="bg-white p-3 rounded-2xl border border-slate-200 shadow-md shrink-0 flex flex-col items-center relative group">
                     <img
                       src={qrCodeImg}
                       alt="PhonePe Payment QR Code - Mediglow Global Solutions"
-                      className="w-36 h-36 object-contain"
+                      className="w-36 h-36 object-contain group-hover:scale-105 transition-transform duration-300"
                     />
-                    <span className="text-[8px] font-black tracking-widest uppercase text-slate-400 mt-1">Scan & Pay</span>
+                    <div className="mt-2 px-3 py-0.5 rounded-full bg-slate-900 text-amber-400 text-[8px] font-black uppercase tracking-widest shadow-sm">
+                      Scan & Pay
+                    </div>
                   </div>
 
-                  {/* Payment Info */}
-                  <div className="w-full sm:flex-1 space-y-2.5 min-w-0">
-                    <div>
-                      <span className="text-[8px] font-black uppercase text-slate-400 block">Shop UPI VPA</span>
-                      <div className="flex items-center justify-between bg-white p-1.5 rounded-lg border border-slate-200 mt-0.5 gap-2">
-                        <span className="font-mono text-[10px] font-extrabold text-slate-900 truncate">{selectedShop.upiId}</span>
+                  {/* Payment Details */}
+                  <div className="w-full sm:flex-1 space-y-3 min-w-0">
+                    {/* Shop UPI VPA */}
+                    <div className="bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-2xs">
+                      <span className="text-[8px] font-black uppercase tracking-wider text-slate-400 block mb-1">
+                        Shop UPI VPA
+                      </span>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="font-mono text-xs font-black text-slate-900 truncate">
+                          {selectedShop.upiId}
+                        </span>
                         <button
                           onClick={() => handleCopy(selectedShop.upiId, 'upi')}
-                          className="px-2 py-0.5 bg-ocean/10 text-ocean hover:bg-ocean hover:text-white text-[8px] font-bold rounded-md transition-colors shrink-0"
+                          className={`px-2.5 py-1 text-[9px] font-extrabold rounded-lg transition-all shrink-0 ${
+                            copiedUpi
+                              ? 'bg-emerald-600 text-white'
+                              : 'bg-ocean/10 text-ocean hover:bg-ocean hover:text-white'
+                          }`}
                         >
-                          {copiedUpi ? '✓' : 'Copy'}
+                          {copiedUpi ? '✓ Copied' : 'Copy'}
                         </button>
                       </div>
                     </div>
 
-                    <div>
-                      <span className="text-[8px] font-black uppercase text-slate-400 block">Manager Contact</span>
-                      <div className="flex items-center justify-between bg-white p-1.5 rounded-lg border border-slate-200 mt-0.5 gap-2">
-                        <span className="font-mono text-[10px] font-extrabold text-slate-900 truncate">{selectedShop.phone}</span>
+                    {/* Manager Contact */}
+                    <div className="bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-2xs">
+                      <span className="text-[8px] font-black uppercase tracking-wider text-slate-400 block mb-1">
+                        Manager Contact
+                      </span>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="font-mono text-xs font-black text-slate-900 truncate">
+                          {selectedShop.phone}
+                        </span>
                         <button
                           onClick={() => handleCopy(selectedShop.phone, 'phone')}
-                          className="px-2 py-0.5 bg-slate-100 text-slate-700 hover:bg-slate-200 text-[8px] font-bold rounded-md transition-colors shrink-0"
+                          className={`px-2.5 py-1 text-[9px] font-extrabold rounded-lg transition-all shrink-0 ${
+                            copiedPhone
+                              ? 'bg-emerald-600 text-white'
+                              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                          }`}
                         >
-                          {copiedPhone ? '✓' : 'Copy'}
+                          {copiedPhone ? '✓ Copied' : 'Copy'}
                         </button>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="grid grid-cols-3 gap-2">
+                {/* Clean, Premium Action Buttons */}
+                <div className="grid grid-cols-2 gap-3 pt-1">
+                  {/* Call Button */}
                   <a
                     href="tel:+917600304304"
-                    className="py-2 px-1 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-[10px] font-extrabold uppercase flex items-center justify-center gap-1 transition-all shadow-sm"
+                    className="py-3 px-4 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md shadow-slate-900/10 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
                   >
-                    <FiPhone className="text-emerald-400 text-xs" /> Call
+                    <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                      <FiPhone className="text-emerald-400 text-xs" />
+                    </div>
+                    <span>Call Store</span>
                   </a>
+
+                  {/* WhatsApp Button */}
                   <a
                     href={`https://wa.me/917600304304?text=${encodeURIComponent(
                       `Hi! I'm interested in buying "${product.name}" from your store.`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-2 px-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-[10px] font-extrabold uppercase flex items-center justify-center gap-1 transition-all shadow-sm"
+                    className="py-3 px-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-xl text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md shadow-emerald-600/20 hover:shadow-lg hover:shadow-emerald-600/30 hover:-translate-y-0.5 active:translate-y-0"
                   >
-                    <FiMessageSquare className="text-xs" /> WhatsApp
-                  </a>
-                  <a
-                    href={selectedShop.mapUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-2 px-1 bg-ocean hover:bg-ocean-deep text-white rounded-xl text-[10px] font-extrabold uppercase flex items-center justify-center gap-1 transition-all shadow-sm"
-                  >
-                    <FiNavigation className="text-xs" /> Map
+                    <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                      <FiMessageSquare className="text-white text-xs" />
+                    </div>
+                    <span>WhatsApp</span>
                   </a>
                 </div>
               </motion.div>

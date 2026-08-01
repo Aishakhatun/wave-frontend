@@ -25,9 +25,6 @@ const PRODUCTS = [
     category: 'Body Care',
     badge: 'Best Seller',
     weight: '200g',
-    price: 499,
-    originalPrice: 699,
-    discount: '28% OFF',
     rating: 4.9,
     reviewsCount: 1240,
     image: p2Img,
@@ -53,9 +50,6 @@ const PRODUCTS = [
     category: 'Hair Care',
     badge: 'New',
     weight: '150ml',
-    price: 399,
-    originalPrice: 549,
-    discount: '27% OFF',
     rating: 4.8,
     reviewsCount: 890,
     image: p1Img,
@@ -81,9 +75,9 @@ const PRODUCTS = [
     category: 'Gummies',
     badge: 'Zero Sugar',
     weight: '30 Gummies',
-    price: 599,
-    originalPrice: 799,
-    discount: '25% OFF',
+    price: 270,
+    originalPrice: 299,
+    discount: '10% OFF',
     rating: 4.9,
     reviewsCount: 1560,
     image: p3Img,
@@ -109,9 +103,9 @@ const PRODUCTS = [
     category: 'Gummies',
     badge: 'Daily Care',
     weight: '30 Gummies',
-    price: 649,
-    originalPrice: 899,
-    discount: '28% OFF',
+    price: 270,
+    originalPrice: 299,
+    discount: '10% OFF',
     rating: 4.9,
     reviewsCount: 2100,
     image: p4Img,
@@ -137,9 +131,9 @@ const PRODUCTS = [
     category: 'Gummies',
     badge: 'HSN',
     weight: '30 Gummies',
-    price: 699,
-    originalPrice: 949,
-    discount: '26% OFF',
+    price: 270,
+    originalPrice: 299,
+    discount: '10% OFF',
     rating: 5.0,
     reviewsCount: 3400,
     image: p5Img,
@@ -362,7 +356,17 @@ const Products = () => {
 
                     {/* Bottom Pricing & Buy Button */}
                     <div className="mt-auto pt-2 border-t border-slate-100 flex items-center justify-between gap-1.5">
-                      <div>
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        {product.price && (
+                          <span className="text-slate-900 font-extrabold text-xs sm:text-sm">
+                            ₹{product.price}
+                          </span>
+                        )}
+                        {product.originalPrice && (
+                          <span className="text-slate-400 line-through text-[10px] sm:text-xs font-semibold">
+                            ₹{product.originalPrice}
+                          </span>
+                        )}
                         {product.discount && (
                           <span className="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 text-[8px] font-black uppercase tracking-wider border border-emerald-200/60">
                             {product.discount}
