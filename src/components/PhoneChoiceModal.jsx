@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiPhoneCall, FiX, FiMessageSquare } from 'react-icons/fi';
+import { FiPhoneCall, FiX } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 
 const PhoneChoiceModal = ({ isOpen, onClose, phoneNumber = '+91 7600304304' }) => {
@@ -37,38 +37,21 @@ const PhoneChoiceModal = ({ isOpen, onClose, phoneNumber = '+91 7600304304' }) =
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-md bg-white rounded-[32px] p-6 md:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.2)] border border-slate-100 overflow-hidden z-10"
+          className="relative w-full max-w-sm bg-white rounded-[28px] p-6 shadow-[0_25px_60px_rgba(0,0,0,0.2)] border border-slate-100 overflow-hidden z-10"
         >
-          {/* Header */}
-          <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-ocean/10 text-ocean flex items-center justify-center text-lg font-bold">
-                <FiMessageSquare />
-              </div>
-              <div>
-                <h3 className="text-base font-black text-slate-900 tracking-tight font-jakarta">
-                  Contact Concierge
-                </h3>
-                <p className="text-xs text-slate-500 font-medium">
-                  {phoneNumber}
-                </p>
-              </div>
-            </div>
+          {/* Top Close Button */}
+          <div className="flex justify-end mb-2">
             <button
               onClick={onClose}
-              className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors"
+              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors"
               aria-label="Close"
             >
-              <FiX className="text-lg" />
+              <FiX className="text-base" />
             </button>
           </div>
 
-          <p className="text-xs text-slate-500 font-semibold mb-6">
-            Choose how you would like to get in touch with our support team:
-          </p>
-
           {/* Options */}
-          <div className="space-y-3.5">
+          <div className="space-y-3">
             {/* Phone Call Option */}
             <button
               onClick={handleCall}
@@ -114,12 +97,6 @@ const PhoneChoiceModal = ({ isOpen, onClose, phoneNumber = '+91 7600304304' }) =
                 Chat &rarr;
               </span>
             </button>
-          </div>
-
-          <div className="mt-6 pt-4 border-t border-slate-100 text-center">
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-              Available 24/7 for customer guidance
-            </span>
           </div>
         </motion.div>
       </div>

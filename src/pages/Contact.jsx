@@ -137,7 +137,7 @@ const Contact = () => {
               <div className="space-y-6">
                 {/* Flagship Spa Location */}
                 <motion.a
-                  href="https://www.google.com/maps/search/?api=1&query=D4+Ahmed+Chambers+Junabazar+Himatnagar"
+                  // href="https://www.google.com/maps/search/?api=1&query=D4+Ahmed+Chambers+Junabazar+Himatnagar"
                   target="_blank"
                   rel="noopener noreferrer"
                   variants={infoItemVariants}
@@ -149,7 +149,7 @@ const Contact = () => {
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center justify-between">
-                      <h4 className="font-black text-slate-400 text-[8px] uppercase tracking-[3px] mb-0.5">Flagship Spa</h4>
+                      <h4 className="font-black text-slate-400 text-[8px] uppercase tracking-[3px] mb-0.5">Location</h4>
                       <span className="text-[9px] font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">View Map</span>
                     </div>
                     <p className="text-slate-800 font-extrabold text-xs sm:text-sm leading-tight group-hover:text-ocean transition-colors">D4 Ahmed Chambers, Junabazar, Himatnagar</p>
@@ -168,7 +168,7 @@ const Contact = () => {
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center justify-between">
-                      <h4 className="font-black text-slate-400 text-[8px] uppercase tracking-[3px] mb-0.5">Concierge</h4>
+                      <h4 className="font-black text-slate-400 text-[8px] uppercase tracking-[3px] mb-0.5">Contact Number</h4>
                       <span className="text-[9px] font-bold text-ocean bg-ocean/10 px-2 py-0.5 rounded-full transition-opacity">Call / WhatsApp</span>
                     </div>
                     <p className="text-slate-800 font-extrabold text-xs sm:text-sm leading-tight group-hover:text-ocean transition-colors">+91 7600304304</p>
@@ -187,7 +187,7 @@ const Contact = () => {
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center justify-between">
-                      <h4 className="font-black text-slate-400 text-[8px] uppercase tracking-[3px] mb-0.5">Inquiries</h4>
+                      <h4 className="font-black text-slate-400 text-[8px] uppercase tracking-[3px] mb-0.5">Email-Id</h4>
                       <span className="text-[9px] font-bold text-coral bg-coral/10 px-2 py-0.5 rounded-full transition-opacity">Send Email</span>
                     </div>
                     <p className="text-slate-800 font-extrabold text-xs sm:text-sm leading-tight truncate group-hover:text-ocean transition-colors">mediglowsolutions@gmail.com</p>
