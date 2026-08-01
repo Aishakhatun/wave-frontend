@@ -100,19 +100,38 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* <div className="pt-10 border-t border-ocean/10 flex flex-col gap-4 text-slate-400 text-[9px] font-black uppercase tracking-[3px] text-center">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <p>© {new Date().getFullYear()} The Wave. All rights reserved.</p>
-            <div className="flex gap-10">
-              <a href="#" className="hover:text-ocean transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-ocean transition-colors">Terms of Service</a>
-            </div>
-          </div>
-          <p className="text-[8px] font-medium normal-case tracking-normal text-slate-400 max-w-3xl mx-auto leading-relaxed border-t border-ocean/5 pt-4">
-            <span className="font-bold text-ocean/60 uppercase tracking-widest text-[8px]">Disclaimer: </span>
-            Dietary supplements are not intended to diagnose, treat, cure, or prevent any disease. Results may vary between individuals. Consult a healthcare professional before use if pregnant, nursing, taking medication, or under medical supervision.
+        <div className="pt-8 md:pt-10 border-t border-ocean/10 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-slate-400 text-xs font-semibold tracking-wide">
+            © {new Date().getFullYear()} <span className="text-ocean font-bold">The Wave</span>. All rights reserved.
           </p>
-        </div> */}
+
+          {/* Created By Credit Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 backdrop-blur-md border border-ocean/15 shadow-[0_4px_16px_rgba(26,143,181,0.08)] transition-all duration-300 hover:border-ocean/40 hover:shadow-[0_8px_24px_rgba(26,143,181,0.18)] hover:-translate-y-0.5 group">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-coral opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-ocean"></span>
+            </span>
+            <span className="text-slate-500 font-semibold text-xs tracking-wide">
+              Created by:
+            </span>
+            <a
+              href="mailto:aishasabugar1@gmail.com"
+              className="text-transparent bg-clip-text bg-gradient-to-r from-ocean via-sky-600 to-coral font-extrabold text-xs tracking-wide hover:opacity-90 transition-opacity flex items-center gap-1.5"
+            >
+              aishasabugar1@gmail.com
+            </a>
+          </div>
+{/* 
+          <div className="flex gap-6 text-xs uppercase tracking-wider font-bold text-slate-400">
+            <a href="#" className="hover:text-ocean transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-ocean transition-colors">Terms of Service</a>
+          </div> */}
+        </div>
+
+        {/* <p className="text-[10px] font-medium text-slate-400 max-w-3xl mx-auto text-center leading-relaxed border-t border-ocean/5 pt-6 mt-6">
+          <span className="font-bold text-ocean/70 uppercase tracking-widest text-[9px]">Disclaimer: </span>
+          Dietary supplements are not intended to diagnose, treat, cure, or prevent any disease. Results may vary between individuals. Consult a healthcare professional before use if pregnant, nursing, taking medication, or under medical supervision.
+        </p> */}
       </div>
     </footer>
   );
