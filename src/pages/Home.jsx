@@ -177,11 +177,11 @@ const Home = () => {
             <motion.p variants={itemVariants} className="text-sm md:text-base text-slate-600 mb-8 max-w-md mx-auto lg:mx-0 leading-relaxed font-medium px-4 md:px-0">
               The Wave brings together beauty, wellness, and self-care with thoughtfully crafted products designed to help you look and feel your best every day.
             </motion.p>
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start px-6 md:px-0">
-              <Link to="/products" className="btn-primary group !py-4 !px-7 text-[11px]">
-                Shop Now <FiArrowRight className="group-hover:translate-x-2 transition-transform" />
+            <motion.div variants={itemVariants} className="flex flex-row gap-3 justify-center lg:justify-start px-4 md:px-0">
+              <Link to="/products" className="btn-primary group !py-3.5 !px-5 sm:!py-4 sm:!px-7 text-[10px] sm:text-[11px] whitespace-nowrap">
+                Shop Now <FiArrowRight className="group-hover:translate-x-2 transition-transform inline" />
               </Link>
-              <Link to="/about" className="btn-outline !py-4 !px-7 text-[11px]">
+              <Link to="/about" className="btn-outline !py-3.5 !px-5 sm:!py-4 sm:!px-7 text-[10px] sm:text-[11px] whitespace-nowrap">
                 About Us
               </Link>
             </motion.div>

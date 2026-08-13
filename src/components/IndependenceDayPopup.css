@@ -1,0 +1,403 @@
+/* ============================================================
+   Independence Day Side Panel — Premium Redesign
+   Saffron: #FF9933 | White | Green: #138808 | Chakra: #003580
+   ============================================================ */
+
+/* ── Panel shell ── */
+.id-panel {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  width: 320px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow:
+    0 0 0 1px rgba(255, 153, 51, 0.35),
+    0 0 0 3px rgba(19, 136, 8, 0.08),
+    0 24px 64px rgba(15, 23, 42, 0.15),
+    0 0 80px rgba(255, 153, 51, 0.08);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  transform-origin: bottom right;
+}
+
+/* ── Slide-in / out ── */
+.id-panel--entering {
+  animation: panel-in 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.id-panel--visible {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+.id-panel--leaving {
+  animation: panel-out 0.55s cubic-bezier(0.36, 0, 0.66, -0.4) forwards;
+}
+
+@keyframes panel-in {
+  0%   { transform: translateX(120%) scale(0.85); opacity: 0; }
+  60%  { transform: translateX(-8px) scale(1.01); opacity: 1; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+@keyframes panel-out {
+  0%   { transform: translateX(0) scale(1); opacity: 1; }
+  100% { transform: translateX(130%) scale(0.8); opacity: 0; }
+}
+
+/* ── Flag ribbon ── */
+.id-ribbon {
+  display: flex;
+  height: 30px;
+}
+.id-ribbon-saffron,
+.id-ribbon-white,
+.id-ribbon-green {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.id-ribbon-saffron {
+  background: linear-gradient(180deg, #FF9933 0%, #e8820a 100%);
+  box-shadow: inset 0 -2px 6px rgba(0,0,0,0.2);
+}
+.id-ribbon-white {
+  background: linear-gradient(180deg, #f5f5f5 0%, #ddd 100%);
+}
+.id-ribbon-green {
+  background: linear-gradient(180deg, #138808 0%, #0c6006 100%);
+  box-shadow: inset 0 -2px 6px rgba(0,0,0,0.2);
+}
+
+/* ── Glow blobs ── */
+.id-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(55px);
+  pointer-events: none;
+  opacity: 0.22;
+}
+.id-blob-a {
+  width: 200px; height: 200px;
+  background: #FF9933;
+  top: -60px; left: -60px;
+  animation: blob-pulse 4s ease-in-out infinite alternate;
+}
+.id-blob-b {
+  width: 180px; height: 180px;
+  background: #138808;
+  bottom: -50px; right: -50px;
+  animation: blob-pulse 5s ease-in-out infinite alternate-reverse;
+}
+@keyframes blob-pulse {
+  from { transform: scale(1);   opacity: 0.18; }
+  to   { transform: scale(1.3); opacity: 0.28; }
+}
+
+/* ── Content wrapper ── */
+.id-content {
+  position: relative;
+  z-index: 2;
+  padding: 20px 22px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ── Top row ── */
+.id-top-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.id-flag-emoji {
+  font-size: 26px;
+  animation: wave-flag 1.8s ease-in-out infinite;
+  transform-origin: bottom left;
+}
+@keyframes wave-flag {
+  0%, 100% { transform: rotate(-5deg); }
+  50%       { transform: rotate(8deg); }
+}
+.id-year-pill {
+  background: linear-gradient(135deg, rgba(255,153,51,0.18), rgba(19,136,8,0.18));
+  border: 1px solid rgba(255,153,51,0.35);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #FF9933;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ── Chakra center ── */
+.id-chakra-center {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 110px;
+}
+.chakra-svg {
+  animation: rotate-chakra 8s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(0,53,128,0.6));
+  position: relative;
+  z-index: 2;
+}
+@keyframes rotate-chakra {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.id-chakra-ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255,153,51,0.3);
+  animation: rotate-chakra 20s linear infinite reverse;
+}
+
+/* ── Text block ── */
+.id-text-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.id-vande {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FF9933;
+  letter-spacing: 1px;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(255,153,51,0.5);
+  animation: glow-text 2.5s ease-in-out infinite alternate;
+}
+@keyframes glow-text {
+  from { text-shadow: 0 0 8px rgba(255,153,51,0.3); }
+  to   { text-shadow: 0 0 24px rgba(255,153,51,0.8); }
+}
+.id-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #FF9933 0%, #e07000 40%, #003580 65%, #138808 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+}
+.id-subtitle {
+  margin: 0;
+  font-size: 12px;
+  color: #475569; /* Slate 600 */
+  font-weight: 600;
+}
+.id-subtitle sup { font-size: 8px; }
+.id-slogan {
+  margin: 0;
+  font-size: 13px;
+  color: #1e293b; /* Slate 800 */
+  font-weight: 700;
+}
+
+/* ── Divider dots ── */
+.id-divider {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.id-divider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* ── CTA Button ── */
+.id-cta {
+  width: 100%;
+  padding: 13px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 800;
+  font-family: inherit;
+  letter-spacing: 0.4px;
+  background: linear-gradient(135deg, #FF9933 0%, #e07000 50%, #FF9933 100%);
+  background-size: 200% auto;
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(255,153,51,0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: shimmer-btn 3s linear infinite;
+}
+@keyframes shimmer-btn {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+.id-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(255,153,51,0.6);
+}
+.id-cta:active { transform: scale(0.97); }
+
+/* ── Dismiss X ── */
+.id-x {
+  position: absolute;
+  top: 38px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.85);
+  color: #475569;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}
+.id-x:hover {
+  background: rgba(220,50,50,0.1);
+  color: #dc2626;
+  transform: rotate(90deg);
+  border-color: rgba(220,50,50,0.3);
+}
+
+/* ── Progress bar ── */
+.id-progress {
+  height: 3px;
+  background: linear-gradient(90deg, #FF9933, #FFD700, #138808);
+  transform-origin: left;
+  animation: progress-shrink linear forwards;
+}
+@keyframes progress-shrink {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+/* ── Floating particles ── */
+.id-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float-up linear infinite;
+  bottom: -10px;
+  opacity: 0;
+}
+@keyframes float-up {
+  0%   { transform: translateY(0) scale(1);    opacity: 0; }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.5; }
+  100% { transform: translateY(-340px) scale(0.3); opacity: 0; }
+}
+
+/* ── Fireworks ── */
+.fireworks-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+.spark {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color, #FF9933);
+  animation: spark-burst 1.4s ease-out infinite;
+  animation-delay: inherit;
+  transform-origin: center;
+}
+@keyframes spark-burst {
+  0%   { transform: rotate(var(--angle)) translateX(0) scale(1); opacity: 1; }
+  70%  { opacity: 0.6; }
+  100% { transform: rotate(var(--angle)) translateX(40px) scale(0); opacity: 0; }
+}
+
+/* ── Responsive ── */
+
+/* Centered layout for mobile & tablet */
+@media (max-width: 640px) {
+  .id-panel {
+    width: 320px;
+    max-width: calc(100vw - 24px);
+    right: auto;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%) scale(1);
+    transform-origin: bottom center;
+    border-radius: 18px;
+  }
+  .id-panel--entering {
+    animation: panel-in-mobile 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+  .id-panel--visible {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  .id-panel--leaving {
+    animation: panel-out-mobile 0.55s cubic-bezier(0.36, 0, 0.66, -0.4) forwards;
+  }
+
+  .id-content {
+    gap: 12px;
+    padding: 16px 18px 14px;
+  }
+  .id-chakra-center {
+    width: 90px;
+    height: 90px;
+  }
+  .id-title {
+    font-size: 16px;
+  }
+  .id-vande {
+    font-size: 14px;
+  }
+  .id-x {
+    top: 36px;
+    right: 12px;
+    width: 26px;
+    height: 26px;
+    font-size: 11px;
+  }
+}
+
+@keyframes panel-in-mobile {
+  0%   { transform: translate(-50%, 120%) scale(0.85); opacity: 0; }
+  60%  { transform: translate(-50%, -8px) scale(1.01); opacity: 1; }
+  100% { transform: translate(-50%, 0) scale(1); opacity: 1; }
+}
+
+@keyframes panel-out-mobile {
+  0%   { transform: translate(-50%, 0) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, 130%) scale(0.8); opacity: 0; }
+}
+
+/* Notched / safe-area devices (iPhone X+) */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .id-panel {
+    bottom: calc(28px + env(safe-area-inset-bottom));
+    right: calc(28px + env(safe-area-inset-right));
+  }
+  @media (max-width: 640px) {
+    .id-panel {
+      bottom: calc(20px + env(safe-area-inset-bottom));
+      right: auto;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+

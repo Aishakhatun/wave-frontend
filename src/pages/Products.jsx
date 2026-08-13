@@ -15,15 +15,41 @@ import p4Img from '../assets/product4.jpg';
 import p4Desc from '../assets/product4_description.jpeg';
 import p5Img from '../assets/product5.jpg';
 import p5Desc from '../assets/product5_description.jpeg';
+import gummiComboImg from '../assets/gummies_combo_tiranga.png';
 
 // ── Static product data with complete purchase options ─────────────────────────
 const PRODUCTS = [
+  // ── Independence Day Tiranga Gummies Combo ────────────────────────────────
+  {
+    id: 6,
+    name: 'Tiranga Gummies Combo',
+    tagline: 'All 3 Gummies · Saffron · White · Green — Celebrate Freedom!',
+    category: 'Gummies',
+    badge: '🎉 Ind. Offer',
+    indOffer: true,
+    isTirangaCombo: true,
+    weight: '3 × 30 Gummies',
+    price: 650,
+    originalPrice: 897,
+    discount: '27% OFF',
+    rating: 5.0,
+    reviewsCount: 80,
+    image: gummiComboImg,
+    descriptionImage: gummiComboImg,
+    description:
+      'Celebrate India\'s Independence Day with our exclusive Tiranga Gummies Combo — 3 gummies, 3 colours, 1 nation. Calcium+D2 (Saffron) · KidsVita (White) · HSN (Green). Together at a special patriotic price till 15th August!',
+    ingredients: ['Calcium (Tricalcium Phosphate)', 'Vitamin D2', 'Ashwagandha', 'Echinacea', 'Biotin', 'Zinc', 'Vitamin C', 'Grape Seed Extract'],
+    bgColor: '#f0fff4',
+    isStoreOnly: true,
+    offerEnds: '15 Aug 2026',
+  },
   {
     id: 1,
     name: 'The wave-Intense Glowing Spa Salt',
     tagline: 'Reveal smoother, softer, more radiant-looking skin',
     category: 'Body Care',
     badge: 'Best Seller',
+    indOffer: true,
     weight: '200g',
     rating: 4.9,
     reviewsCount: 1240,
@@ -49,7 +75,8 @@ const PRODUCTS = [
     tagline: 'Refresh your hair anytime, anywhere',
     category: 'Hair Care',
     badge: 'New',
-    weight: '150ml',
+    indOffer: true,
+    weight: '100ml',
     rating: 4.8,
     reviewsCount: 890,
     image: p1Img,
@@ -74,6 +101,7 @@ const PRODUCTS = [
     tagline: 'Support your daily calcium and vitamin D2 intake',
     category: 'Gummies',
     badge: 'Zero Sugar',
+    indOffer: true,
     weight: '30 Gummies',
     price: 270,
     originalPrice: 299,
@@ -102,6 +130,7 @@ const PRODUCTS = [
     tagline: 'Daily nutritional support to help complement a balanced lifestyle',
     category: 'Gummies',
     badge: 'Daily Care',
+    indOffer: true,
     weight: '30 Gummies',
     price: 270,
     originalPrice: 299,
@@ -130,6 +159,7 @@ const PRODUCTS = [
     tagline: 'Nourish your beauty routine from within',
     category: 'Gummies',
     badge: 'HSN',
+    indOffer: true,
     weight: '30 Gummies',
     price: 270,
     originalPrice: 299,
@@ -232,8 +262,8 @@ const Products = () => {
                 <button
                   key={cat}
                   className={`whitespace-nowrap px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-wider transition-all ${filter === cat
-                      ? 'bg-ocean text-white shadow-md shadow-ocean/20 scale-105'
-                      : 'bg-white text-slate-500 border border-slate-200 hover:border-ocean hover:text-ocean'
+                    ? 'bg-ocean text-white shadow-md shadow-ocean/20 scale-105'
+                    : 'bg-white text-slate-500 border border-slate-200 hover:border-ocean hover:text-ocean'
                     }`}
                   onClick={() => setFilter(cat)}
                 >
@@ -244,6 +274,7 @@ const Products = () => {
           </div>
         </div>
       </section>
+
 
       {/* ─── Products Grid — All Products ─── */}
       <section className="px-4 sm:px-6 md:px-10">
@@ -259,6 +290,7 @@ const Products = () => {
                   whileHover={{ y: -8, scale: 1.015 }}
                   transition={{ delay: i * 0.05, duration: 0.4, type: 'spring', stiffness: 180, damping: 20 }}
                   key={product.id}
+                  onClick={(e) => openPurchaseModal(product, e)}
                   className="flex flex-col group bg-white rounded-2xl border border-slate-100 p-4 shadow-sm hover:shadow-lg transition-all relative overflow-hidden cursor-pointer"
                 >
                   {/* Top Image Box */}
@@ -274,12 +306,23 @@ const Products = () => {
                       className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-sm"
                     />
 
-                    {/* Category Badge */}
-                    {product.badge && (
+                    {/* Independence Day Flag Badge */}
+                    {product.indOffer && (
+                      <div className="absolute top-2 left-2 flex items-center gap-1 bg-white/95 backdrop-blur-sm px-2 py-1 rounded-full shadow-sm border border-[#FF9933]/30">
+                        <span className="text-[10px]">🇮🇳</span>
+                        <span className="text-[7px] font-black uppercase tracking-wider text-[#FF7B00]">
+                          {product.isTirangaCombo ? 'Ind. Offer' : 'Ind. Offer'}
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Category / normal Badge */}
+                    {product.badge && !product.indOffer && (
                       <div className="absolute top-2 left-2 bg-white/90 backdrop-blur px-2.5 py-0.5 rounded-full text-[8px] font-black text-ocean uppercase tracking-wider shadow-sm">
                         {product.badge}
                       </div>
                     )}
+
 
                     {/* Weight Chip */}
                     <div className="absolute bottom-2 right-2 bg-slate-900/80 text-white backdrop-blur px-2 py-0.5 rounded-full text-[8px] font-bold">
@@ -304,7 +347,7 @@ const Products = () => {
                     >
                       {product.name}
                     </h3>
-                    
+
                     <p className="text-slate-500 text-[11px] leading-snug line-clamp-1 mb-2 font-medium">
                       {product.tagline}
                     </p>
@@ -321,8 +364,8 @@ const Products = () => {
                           {/* Amazon Symbol */}
                           <div className="w-6 h-6 rounded-md bg-[#141920] flex items-center justify-center shadow-sm border border-slate-800 hover:scale-110 transition-transform cursor-pointer" title="Buy on Amazon">
                             <svg className="w-3.5 h-3.5" viewBox="0 0 32 32" fill="none">
-                              <path d="M10 12.5c0-1.8 1.1-2.5 2.5-2.5 1.3 0 1.8.7 1.8 2v4.5c0 .8.1 1.2.5 1.2.4 0 .8-.5 1-1l.7 1c-.5 1.1-1.3 1.7-2.3 1.7-1.1 0-1.6-.7-1.6-1.7v-.5c-.6.9-1.4 1.4-2.5 1.4-1.6 0-2.6-1.1-2.6-2.5 0-1.8 1.2-2.7 3.3-2.7h1.2v-.4c0-.7-.4-1.1-1.2-1.1-.7 0-1.2.3-1.4.9l-1.6-.8zm2.8 3.3v-.8h-1c-1 0-1.5.4-1.5 1.2 0 .6.4 1 1 1 .7 0 1.5-.5 1.5-1.4z" fill="#FFFFFF"/>
-                              <path d="M7 21.5c4 2.5 11 3 16 0M21 19.5c.8.8 1.8 1.5 2.5 1.8-.2-.8-.6-1.8-.8-2.5" stroke="#FF9900" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M10 12.5c0-1.8 1.1-2.5 2.5-2.5 1.3 0 1.8.7 1.8 2v4.5c0 .8.1 1.2.5 1.2.4 0 .8-.5 1-1l.7 1c-.5 1.1-1.3 1.7-2.3 1.7-1.1 0-1.6-.7-1.6-1.7v-.5c-.6.9-1.4 1.4-2.5 1.4-1.6 0-2.6-1.1-2.6-2.5 0-1.8 1.2-2.7 3.3-2.7h1.2v-.4c0-.7-.4-1.1-1.2-1.1-.7 0-1.2.3-1.4.9l-1.6-.8zm2.8 3.3v-.8h-1c-1 0-1.5.4-1.5 1.2 0 .6.4 1 1 1 .7 0 1.5-.5 1.5-1.4z" fill="#FFFFFF" />
+                              <path d="M7 21.5c4 2.5 11 3 16 0M21 19.5c.8.8 1.8 1.5 2.5 1.8-.2-.8-.6-1.8-.8-2.5" stroke="#FF9900" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           </div>
 
@@ -330,7 +373,7 @@ const Products = () => {
                           <div className="w-6 h-6 rounded-md bg-[#2874F0] flex items-center justify-center shadow-sm border border-blue-400/30 hover:scale-110 transition-transform cursor-pointer" title="Buy on Flipkart">
                             <svg className="w-3.5 h-3.5" viewBox="0 0 32 32" fill="none">
                               <path d="M9 10h14l-1.5 14h-11L9 10z" fill="#FFE11B" />
-                              <path d="M13 10V7.5C13 5.8 14.3 4.5 16 4.5s3 1.3 3 3V10" stroke="#FFE11B" strokeWidth="2.5" strokeLinecap="round"/>
+                              <path d="M13 10V7.5C13 5.8 14.3 4.5 16 4.5s3 1.3 3 3V10" stroke="#FFE11B" strokeWidth="2.5" strokeLinecap="round" />
                               <text x="16" y="20.5" fontSize="12" fontWeight="900" fill="#2874F0" textAnchor="middle" fontFamily="sans-serif">f</text>
                             </svg>
                           </div>
@@ -338,7 +381,7 @@ const Products = () => {
                           {/* Smytten Symbol */}
                           <div className="w-6 h-6 rounded-md bg-[#E91E63] flex items-center justify-center shadow-sm border border-pink-400/30 hover:scale-110 transition-transform cursor-pointer" title="Buy on Smytten">
                             <svg className="w-3.5 h-3.5" viewBox="0 0 32 32" fill="none">
-                              <path d="M16 5l3.2 7L26 13l-5 5L22.5 25L16 21.5L9.5 25L11 18l-5-5l6.8-1L16 5z" fill="#FFFFFF"/>
+                              <path d="M16 5l3.2 7L26 13l-5 5L22.5 25L16 21.5L9.5 25L11 18l-5-5l6.8-1L16 5z" fill="#FFFFFF" />
                               <text x="16" y="19" fontSize="10" fontWeight="900" fill="#E91E63" textAnchor="middle" fontFamily="sans-serif">S</text>
                             </svg>
                           </div>
@@ -346,14 +389,22 @@ const Products = () => {
                           {/* Nearby Shop Symbol */}
                           <div className="w-6 h-6 rounded-md bg-emerald-500 flex items-center justify-center shadow-sm border border-emerald-400 hover:scale-110 transition-transform cursor-pointer" title="Buy from Nearby Shop">
                             <svg className="w-3.5 h-3.5" viewBox="0 0 32 32" fill="none">
-                              <path d="M7 14l2-6h14l2 6v10a2 2 0 01-2 2H9a2 2 0 01-2-2V14z" fill="#FFFFFF"/>
-                              <path d="M6 14h20" stroke="#10B981" strokeWidth="2"/>
-                              <path d="M13 22v-5h6v5" stroke="#10B981" strokeWidth="2" strokeLinecap="round"/>
-                              <circle cx="16" cy="10" r="1.5" fill="#10B981"/>
+                              <path d="M7 14l2-6h14l2 6v10a2 2 0 01-2 2H9a2 2 0 01-2-2V14z" fill="#FFFFFF" />
+                              <path d="M6 14h20" stroke="#10B981" strokeWidth="2" />
+                              <path d="M13 22v-5h6v5" stroke="#10B981" strokeWidth="2" strokeLinecap="round" />
+                              <circle cx="16" cy="10" r="1.5" fill="#10B981" />
                             </svg>
                           </div>
                         </div>
                       )}
+                    </div>
+
+                    {/* Independence Day offer-ends label - highlighted and shown for all products */}
+                    <div className="flex items-center justify-center gap-2 mt-2 px-3 py-2 rounded-lg bg-gradient-to-r from-[#FF9933]/25 via-amber-50 to-[#138808]/25 border-2 border-[#FF9933] shadow-md animate-pulse">
+                      <span className="text-[10px] filter drop-shadow">⏰</span>
+                      <span className="text-[9.5px] font-black text-[#e07000] uppercase tracking-widest">
+                        OFFER TILL 15 AUG 2026
+                      </span>
                     </div>
 
                     {/* Bottom Pricing & Buy Button */}
