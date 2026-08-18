@@ -15,17 +15,17 @@ import p4Img from '../assets/product4.jpg';
 import p4Desc from '../assets/product4_description.jpeg';
 import p5Img from '../assets/product5.jpg';
 import p5Desc from '../assets/product5_description.jpeg';
-import gummiComboImg from '../assets/gummies_combo_tiranga.png';
+import gummiComboImg from '../assets/gummies_combo_rakhi.png';
 
 // ── Static product data with complete purchase options ─────────────────────────
 const PRODUCTS = [
-  // ── Independence Day Tiranga Gummies Combo ────────────────────────────────
+  // ── Raksha Bandhan Sibling Gummies Combo ──────────────────────────────────
   {
     id: 6,
-    name: 'Tiranga Gummies Combo',
-    tagline: 'All 3 Gummies · Saffron · White · Green — Celebrate Freedom!',
+    name: 'Rakhi Special Sibling Combo',
+    tagline: 'Health & Glow for Siblings · Calcium · KidsVita · HSN',
     category: 'Gummies',
-    badge: '🎉 Ind. Offer',
+    badge: '🎉 Rakhi Special',
     indOffer: true,
     isTirangaCombo: true,
     weight: '3 × 30 Gummies',
@@ -37,11 +37,11 @@ const PRODUCTS = [
     image: gummiComboImg,
     descriptionImage: gummiComboImg,
     description:
-      'Celebrate India\'s Independence Day with our exclusive Tiranga Gummies Combo — 3 gummies, 3 colours, 1 nation. Calcium+D2 (Saffron) · KidsVita (White) · HSN (Green). Together at a special patriotic price till 15th August!',
+      'Celebrate the beautiful bond of love, care, and protection this Raksha Bandhan with our Sibling Special Gummies Combo! A thoughtful health gift featuring Calcium+D2, KidsVita, and Hair, Skin & Nails gummies. Together at a special celebratory price till 28th August!',
     ingredients: ['Calcium (Tricalcium Phosphate)', 'Vitamin D2', 'Ashwagandha', 'Echinacea', 'Biotin', 'Zinc', 'Vitamin C', 'Grape Seed Extract'],
-    bgColor: '#f0fff4',
+    bgColor: '#fff1f2',
     isStoreOnly: true,
-    offerEnds: '15 Aug 2026',
+    offerEnds: '28 Aug 2026',
   },
   {
     id: 1,
@@ -193,18 +193,21 @@ const Products = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isStepperOpen, setIsStepperOpen] = useState(false);
 
+  const isOfferActive = new Date() <= new Date('2026-08-28T23:59:59');
+  const visibleProducts = PRODUCTS.filter(p => !p.isTirangaCombo || isOfferActive);
+
   useEffect(() => {
     if (location.state?.selectedProductName) {
-      const match = PRODUCTS.find(p => p.name === location.state.selectedProductName);
+      const match = visibleProducts.find(p => p.name === location.state.selectedProductName);
       if (match) {
         setSelectedProduct(match);
         setIsStepperOpen(true);
       }
     }
-  }, [location.state]);
+  }, [location.state, visibleProducts]);
 
-  const categories = ['All', ...new Set(PRODUCTS.map(p => p.category))];
-  const filteredProducts = PRODUCTS.filter(p => {
+  const categories = ['All', ...new Set(visibleProducts.map(p => p.category))];
+  const filteredProducts = visibleProducts.filter(p => {
     const matchCat = filter === 'All' || p.category === filter;
     const matchSearch = p.name.toLowerCase().includes(search.toLowerCase());
     return matchCat && matchSearch;
@@ -306,21 +309,21 @@ const Products = () => {
                       className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-sm"
                     />
 
-                    {/* Independence Day Flag Badge */}
-                    {product.indOffer && (
-                      <div className="absolute top-2 left-2 flex items-center gap-1 bg-white/95 backdrop-blur-sm px-2 py-1 rounded-full shadow-sm border border-[#FF9933]/30">
-                        <span className="text-[10px]">🇮🇳</span>
-                        <span className="text-[7px] font-black uppercase tracking-wider text-[#FF7B00]">
-                          {product.isTirangaCombo ? 'Ind. Offer' : 'Ind. Offer'}
+                    {/* Rakhi Festive Badge */}
+                    {isOfferActive && product.indOffer ? (
+                      <div className="absolute top-2 left-2 flex items-center gap-1 bg-white/95 backdrop-blur-sm px-2 py-1 rounded-full shadow-sm border border-[#db2777]/30">
+                        <span className="text-[10px]">💝</span>
+                        <span className="text-[7px] font-black uppercase tracking-wider text-[#db2777]">
+                          {product.isTirangaCombo ? 'Rakhi Special' : 'Rakhi Offer'}
                         </span>
                       </div>
-                    )}
-
-                    {/* Category / normal Badge */}
-                    {product.badge && !product.indOffer && (
-                      <div className="absolute top-2 left-2 bg-white/90 backdrop-blur px-2.5 py-0.5 rounded-full text-[8px] font-black text-ocean uppercase tracking-wider shadow-sm">
-                        {product.badge}
-                      </div>
+                    ) : (
+                      /* Category / normal Badge */
+                      product.badge && (
+                        <div className="absolute top-2 left-2 bg-white/90 backdrop-blur px-2.5 py-0.5 rounded-full text-[8px] font-black text-ocean uppercase tracking-wider shadow-sm">
+                          {product.badge}
+                        </div>
+                      )
                     )}
 
 
@@ -399,13 +402,15 @@ const Products = () => {
                       )}
                     </div>
 
-                    {/* Independence Day offer-ends label - highlighted and shown for all products */}
-                    <div className="flex items-center justify-center gap-2 mt-2 px-3 py-2 rounded-lg bg-gradient-to-r from-[#FF9933]/25 via-amber-50 to-[#138808]/25 border-2 border-[#FF9933] shadow-md animate-pulse">
-                      <span className="text-[10px] filter drop-shadow">⏰</span>
-                      <span className="text-[9.5px] font-black text-[#e07000] uppercase tracking-widest">
-                        OFFER TILL 15 AUG 2026
-                      </span>
-                    </div>
+                    {/* Raksha Bandhan offer-ends label */}
+                    {isOfferActive && (
+                      <div className="flex items-center justify-center gap-2 mt-2 px-3 py-2 rounded-lg bg-gradient-to-r from-[#db2777]/20 via-pink-50/80 to-[#eab308]/20 border-2 border-[#db2777]/40 shadow-sm animate-pulse">
+                        <span className="text-[10px] filter drop-shadow">💝</span>
+                        <span className="text-[9.5px] font-black text-[#db2777] uppercase tracking-widest">
+                          OFFER TILL 28/08/2026
+                        </span>
+                      </div>
+                    )}
 
                     {/* Bottom Pricing & Buy Button */}
                     <div className="mt-auto pt-2 border-t border-slate-100 flex items-center justify-between gap-1.5">

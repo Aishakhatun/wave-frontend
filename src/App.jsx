@@ -2,7 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import IndependenceDayPopup from './components/IndependenceDayPopup';
+import RakshabandhanPopup from './components/RakshabandhanPopup';
 import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      <IndependenceDayPopup />
+      <RakshabandhanPopup />
       <div className="app">
         <Navbar />
         <main className="overflow-hidden">
